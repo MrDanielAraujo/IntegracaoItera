@@ -1,0 +1,592 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "IntegracaoItera",
+    "version": "1.0"
+  },
+  "paths": {
+    "/ServerApi/GetAccessToken": {
+      "get": {
+        "tags": [
+          "Itera - Endpoints Diretos"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ServerApi/GetStatus": {
+      "get": {
+        "tags": [
+          "Itera - Endpoints Diretos"
+        ],
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServerStatusResponseDto"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ServerApi/GetExport": {
+      "get": {
+        "tags": [
+          "Itera - Endpoints Diretos"
+        ],
+        "parameters": [
+          {
+            "name": "cnpj",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ServerExportJsonDto"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ServerApi/GetDePara": {
+      "get": {
+        "tags": [
+          "Itera - Endpoints Diretos"
+        ],
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ServerApi/UploadDocument": {
+      "post": {
+        "tags": [
+          "Itera - Endpoints Diretos"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Source": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Cnpj": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "Source": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Cnpj": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "ServerExportJsonDto": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "nullable": true
+          },
+          "tempo": {
+            "type": "string",
+            "nullable": true
+          },
+          "conf": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          },
+          "data_ano": {
+            "type": "string",
+            "nullable": true
+          },
+          "termo_total": {
+            "type": "string",
+            "nullable": true
+          },
+          "valor": {
+            "type": "string",
+            "nullable": true
+          },
+          "page": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "subsection": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipo": {
+            "type": "string",
+            "nullable": true
+          },
+          "section": {
+            "type": "string",
+            "nullable": true
+          },
+          "moeda": {
+            "type": "string",
+            "nullable": true
+          },
+          "escala": {
+            "type": "string",
+            "nullable": true
+          },
+          "empresa": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnpj": {
+            "type": "string",
+            "nullable": true
+          },
+          "consolidado": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipo_balanco": {
+            "type": "string",
+            "nullable": true
+          },
+          "y": {
+            "type": "string",
+            "nullable": true
+          },
+          "x": {
+            "type": "string",
+            "nullable": true
+          },
+          "unique_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "parent": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_total": {
+            "type": "string",
+            "nullable": true
+          },
+          "over_threshold_h": {
+            "type": "string",
+            "nullable": true
+          },
+          "over_threshold_v": {
+            "type": "string",
+            "nullable": true
+          },
+          "bbox_left": {
+            "type": "string",
+            "nullable": true
+          },
+          "bbox_top": {
+            "type": "string",
+            "nullable": true
+          },
+          "bbox_height": {
+            "type": "string",
+            "nullable": true
+          },
+          "bbox_width": {
+            "type": "string",
+            "nullable": true
+          },
+          "data_init": {
+            "type": "string",
+            "nullable": true
+          },
+          "formula": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServerHistoryResponseDto": {
+        "type": "object",
+        "properties": {
+          "retifiedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "retifiedDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ServerStatusResponseDto": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "nullable": true
+          },
+          "customId": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnpj": {
+            "type": "string",
+            "nullable": true
+          },
+          "path": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "aprovedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "insertedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastModifiedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "retifiedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "synonymsList": {
+            "type": "string",
+            "nullable": true
+          },
+          "processingStartDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "processingEndDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "processingAttempts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "date": {
+            "type": "string",
+            "nullable": true
+          },
+          "insertionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "retifiedDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "concludedDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "modifyDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "aprovedByAlice": {
+            "type": "boolean"
+          },
+          "rulesCreatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "rulesCreatedDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "spreadsheet_path": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "company": {
+            "type": "string",
+            "nullable": true
+          },
+          "rejectionDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "batch": {
+            "type": "string",
+            "nullable": true
+          },
+          "enterpriseName": {
+            "type": "string",
+            "nullable": true
+          },
+          "language": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "nullable": true
+          },
+          "docType": {
+            "type": "string",
+            "nullable": true
+          },
+          "retificationHistory": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ServerHistoryResponseDto"
+            },
+            "nullable": true
+          },
+          "reviewer": {
+            "type": "string",
+            "nullable": true
+          },
+          "auditor": {
+            "type": "string",
+            "nullable": true
+          },
+          "idType": {
+            "type": "string",
+            "nullable": true
+          },
+          "priority": {
+            "type": "string",
+            "nullable": true
+          },
+          "priorityDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

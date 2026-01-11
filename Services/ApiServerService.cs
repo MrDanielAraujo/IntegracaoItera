@@ -2,32 +2,35 @@
 using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Interfaces;
 using Microsoft.Extensions.Options;
-using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
 namespace IntegracaoItera.Services;
 
-public class ApiServerService : IApiServer
+public class ApiServerService(
+    IAuthorizedHttpClientFactory httpClientFactory,
+    IOptions<ServerSettings> settings,
+    ITokenService tokenService) : IApiServer
 {
-    private readonly IAuthorizedHttpClientFactory _httpClientFactory;
-    private readonly ServerSettings _settings;
+    private readonly IAuthorizedHttpClientFactory _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+    private readonly ServerSettings _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
+    private readonly ITokenService _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
 
-    public ApiServerService(
-        IAuthorizedHttpClientFactory httpClientFactory,
-        IOptions<ServerSettings> settings)
+    public async Task<string> GetAccessToken(CancellationToken cancellationToken = default)
     {
-        _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
-        _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
+        var token = await _tokenService.GetAccessTokenAsync(_settings, cancellationToken);
+
+        return token!;
     }
 
     public async Task<string> GetDeParaAsync(Guid documentId, CancellationToken cancellationToken = default)
     {
-        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(cancellationToken);
+        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync( _settings , cancellationToken);
 
-        var url = string.Format(_settings.Endpoints.DePara, documentId);
+        var endpoint = (EndpointSettings)_settings.Endpoints;
+
+        var url = string.Format(endpoint.DePara, documentId);
 
         var response = await httpClient.GetAsync(url, cancellationToken);
         response.EnsureSuccessStatusCode();
@@ -37,9 +40,11 @@ public class ApiServerService : IApiServer
 
     public async Task<List<ServerExportJsonDto>> GetExportJsonAsync(long cnpj, CancellationToken cancellationToken = default)
     {
-        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(cancellationToken);
+        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(_settings, cancellationToken);
 
-        var url = string.Format(_settings.Endpoints.ExportJson, cnpj);
+        var endpoint = (EndpointSettings)_settings.Endpoints;
+
+        var url = string.Format(endpoint.ExportJson, cnpj);
 
         var response = await httpClient.GetAsync(url, cancellationToken);
         response.EnsureSuccessStatusCode();
@@ -49,7 +54,7 @@ public class ApiServerService : IApiServer
 
         if (jsonNode is not JsonObject listasContainer)
         {
-            return new List<ServerExportJsonDto>();
+            return [];
         }
 
         var listaControladora = new List<ServerExportJsonDto>();
@@ -71,9 +76,11 @@ public class ApiServerService : IApiServer
 
     public async Task<ServerStatusResponseDto> GetStatusAsync(Guid documentId, CancellationToken cancellationToken = default)
     {
-        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(cancellationToken);
+        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(_settings, cancellationToken);
 
-        var url = string.Format(_settings.Endpoints.Status, documentId);
+        var endpoint = (EndpointSettings)_settings.Endpoints;
+
+        var url = string.Format(endpoint.Status, documentId);
 
         var response = await httpClient.GetAsync(url, cancellationToken);
         response.EnsureSuccessStatusCode();
@@ -94,7 +101,7 @@ public class ApiServerService : IApiServer
             throw new ArgumentException("O Cnpj é uma informação obrigatoria.", nameof(file));
         }
 
-        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(cancellationToken);
+        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(_settings, cancellationToken);
 
         using var formData = new MultipartFormDataContent();
 
@@ -112,7 +119,9 @@ public class ApiServerService : IApiServer
         formData.Add(new StringContent(description ?? string.Empty), "description");
         formData.Add(new StringContent(cnpj ?? string.Empty), "cnpj");
 
-        var response = await httpClient.PostAsync(_settings.Endpoints.UploadDoc, formData, cancellationToken);
+        var endpoint = (EndpointSettings)_settings.Endpoints;
+
+        var response = await httpClient.PostAsync(endpoint.UploadDoc, formData, cancellationToken);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadAsStringAsync(cancellationToken);

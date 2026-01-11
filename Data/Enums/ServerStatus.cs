@@ -12,7 +12,7 @@ public enum ServerStatus
     /// Documento enviado para a Server e aguardando
     /// início do processamento.
     /// </summary>
-    EnviadoParaItera = 2,
+    EnviadoParaServer = 2,
 
     /// <summary>
     /// Documento em processamento no Server.

@@ -1,48 +1,30 @@
-﻿namespace IntegracaoItera.Configuration;
+﻿using IntegracaoItera.Interfaces;
 
-public class ServerSettings
+namespace IntegracaoItera.Configuration;
+
+public class ServerSettings : IClientServerSettings
 {
+    public const string SettingName = "ServerSettings";
     /// <summary>
     /// Nome da seção no appsettings.json
     /// </summary>
-    public const string SectionName = "ServerSettings";
+    public string SectionName { get => SettingName; } 
 
     /// <summary>
     /// Configurações de autenticação
     /// </summary>
-    public AuthSettings Auth { get; set; } = new();
+    public AuthSetings Auth { get; set; } = new();
 
     /// <summary>
     /// Configurações de endpoints da API
     /// </summary>
-    public EndpointSettings Endpoints { get; set; } = new();
-
-    /// <summary>
-    /// Nome usado para o cache do access token
-    /// </summary>
-    public string CacheKey { get; set; } = "server_access_token";
-}
-
-/// <summary>
-/// Configurações de autenticação para a API Itera.
-/// </summary>
-public class AuthSettings
-{
-    /// <summary>
-    /// Nome de usuário para autenticação
-    /// </summary>
-    public string Username { get; set; } = string.Empty;
-
-    /// <summary>
-    /// Senha para autenticação
-    /// </summary>
-    public string Password { get; set; } = string.Empty;
+    public IEndpointSettings Endpoints { get; set; } = new EndpointSettings();
 }
 
 /// <summary>
 /// Configurações de endpoints da API Itera.
 /// </summary>
-public class EndpointSettings
+public class EndpointSettings : IEndpointSettings
 {
     /// <summary>
     /// URL do endpoint de autenticação

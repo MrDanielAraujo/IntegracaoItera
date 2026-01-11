@@ -11,5 +11,5 @@ public interface ITokenService
     /// </summary>
     /// <param name="cancellationToken">Token de cancelamento</param>
     /// <returns>Token de acesso Bearer válido</returns>
-    Task<string?> GetAccessTokenAsync(CancellationToken cancellationToken = default);
+    Task<string?> GetAccessTokenAsync(IClientServerSettings settings, CancellationToken cancellationToken = default);
 }

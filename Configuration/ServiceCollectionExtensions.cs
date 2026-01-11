@@ -14,7 +14,8 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddAppServices(this IServiceCollection services, IConfiguration configuration)
     {
         // Configuração tipada usando Options Pattern
-        services.Configure<ServerSettings>(configuration.GetSection(ServerSettings.SectionName));
+        services.Configure<ServerSettings>(configuration.GetSection(ServerSettings.SettingName));
+        services.Configure<ClientSettings>(configuration.GetSection(ClientSettings.SettingName));
 
         // Registra HttpClient usando IHttpClientFactory (melhor prática para gerenciamento de conexões)
         services.AddHttpClient("IteraAuth");
@@ -32,6 +33,11 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IAuthorizedHttpClientFactory, AuthorizedHttpClientService>();
         services.AddScoped<IApiServer, ApiServerService>();
+
+
+        services.AddScoped<IApiClient, ApiClientService>();
+        services.AddScoped<IClientService, ClientService>();
+
 
         // Registra serviço de processamento de documentos (versão anterior)
         // services.AddScoped<IDocumentProcessingService, DocumentProcessingService>();

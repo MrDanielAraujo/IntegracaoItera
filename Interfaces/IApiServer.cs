@@ -4,6 +4,8 @@ namespace IntegracaoItera.Interfaces;
 
 public interface IApiServer
 {
+    Task<string>  GetAccessToken(CancellationToken cancellationToken = default);
+
     /// <summary>
     /// Obtém o status de um documento pelo ID.
     /// </summary>

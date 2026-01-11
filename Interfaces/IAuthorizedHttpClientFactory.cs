@@ -11,5 +11,5 @@ public interface IAuthorizedHttpClientFactory
     /// </summary>
     /// <param name="cancellationToken">Token de cancelamento</param>
     /// <returns>HttpClient configurado com Bearer token</returns>
-    Task<HttpClient> CreateAuthorizedClientAsync(CancellationToken cancellationToken = default);
+    Task<HttpClient> CreateAuthorizedClientAsync(IClientServerSettings settings, CancellationToken cancellationToken = default);
 }

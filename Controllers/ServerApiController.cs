@@ -8,18 +8,10 @@ namespace IntegracaoItera.Controllers;
 [Route("[controller]")]
 [Produces("application/json")]
 [Tags("Itera - Endpoints Diretos")]
-public class ServerApiController : ControllerBase
+public class ServerApiController(IApiServer apiServer) : ControllerBase
 {
-    private readonly ITokenService _tokenService;
-    private readonly IApiServer _apiServer;
-
-    public ServerApiController(
-        ITokenService tokenService,
-        IApiServer apiServer)
-    {
-        _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
-        _apiServer = apiServer ?? throw new ArgumentNullException(nameof(apiServer));
-    }
+    
+    private readonly IApiServer _apiServer = apiServer ?? throw new ArgumentNullException(nameof(apiServer));
 
 
     /// <summary>
@@ -52,7 +44,7 @@ public class ServerApiController : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetAccessToken(CancellationToken cancellationToken)
     {
-        var token = await _tokenService.GetAccessTokenAsync(cancellationToken);
+        var token = await _apiServer.GetAccessToken(cancellationToken);
         return Ok(token);
     }
 

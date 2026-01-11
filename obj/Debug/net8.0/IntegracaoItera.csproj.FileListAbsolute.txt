@@ -51,3 +51,8 @@ C:\Users\daniel.gomes\source\repos\IntegracaoItera\obj\Debug\net8.0\refint\Integ
 C:\Users\daniel.gomes\source\repos\IntegracaoItera\obj\Debug\net8.0\IntegracaoItera.pdb
 C:\Users\daniel.gomes\source\repos\IntegracaoItera\obj\Debug\net8.0\IntegracaoItera.genruntimeconfig.cache
 C:\Users\daniel.gomes\source\repos\IntegracaoItera\obj\Debug\net8.0\ref\IntegracaoItera.dll
+C:\Users\daniel.gomes\source\repos\IntegracaoItera\bin\Debug\net8.0\dotenv.net.dll
+C:\Users\daniel.gomes\source\repos\IntegracaoItera\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\daniel.gomes\source\repos\IntegracaoItera\bin\Debug\net8.0\Npgsql.dll
+C:\Users\daniel.gomes\source\repos\IntegracaoItera\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\daniel.gomes\source\repos\IntegracaoItera\obj\Debug\net8.0\IntegracaoItera.sourcelink.json

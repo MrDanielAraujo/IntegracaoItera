@@ -2,6 +2,8 @@
 using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Interfaces;
 using Microsoft.Extensions.Options;
+using System.Text;
+using System.Text.Json;
 
 namespace IntegracaoItera.Services;
 
@@ -12,17 +14,15 @@ public class ApiClientService(
     private readonly IAuthorizedHttpClientFactory _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
     private readonly ClientSettings _settings = settings?.Value ?? throw new ArgumentNullException(nameof(settings));
 
-    public async Task<string> SendResultAsync(ClientResponseDto request, CancellationToken cancellationToken = default)
+    public async Task<string> SetResultAsync(ClientResponseDto request, CancellationToken cancellationToken = default)
     {
         using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(_settings, cancellationToken);
 
-        using var formData = new MultipartFormDataContent
-        {
-            { new StringContent(request.Cnpj ?? string.Empty), "cnpj" },
-            { new StringContent(request.Result ?? string.Empty), "result" }
-        };
-        
-        var response = await httpClient.PostAsync(_settings.Endpoints.Result, formData, cancellationToken);
+        string jsonPayload = JsonSerializer.Serialize(request);
+
+        var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+        var response = await httpClient.PostAsync(_settings.Endpoints.Result, content, cancellationToken);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadAsStringAsync(cancellationToken);

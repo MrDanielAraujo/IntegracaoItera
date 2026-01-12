@@ -10,5 +10,5 @@ public interface IApiClient
     /// <param name="documentId">ID do documento</param>
     /// <param name="cancellationToken">Token de cancelamento</param>
     /// <returns>Status do documento</returns>
-    Task<string> SendResultAsync(ClientResponseDto request, CancellationToken cancellationToken = default);
+    Task<string> SetResultAsync(ClientResponseDto request, CancellationToken cancellationToken = default);
 }

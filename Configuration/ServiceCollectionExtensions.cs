@@ -18,8 +18,11 @@ public static class ServiceCollectionExtensions
         services.Configure<ClientSettings>(configuration.GetSection(ClientSettings.SettingName));
 
         // Registra HttpClient usando IHttpClientFactory (melhor prática para gerenciamento de conexões)
-        services.AddHttpClient("IteraAuth");
-        services.AddHttpClient("IteraApi");
+        // services.AddHttpClient("IteraAuth");
+        // services.AddHttpClient("IteraApi");
+
+        services.AddHttpClient(ServerSettings.SettingName);
+        services.AddHttpClient(ClientSettings.SettingName);
 
         // Registra serviços de cache
         services.AddMemoryCache();

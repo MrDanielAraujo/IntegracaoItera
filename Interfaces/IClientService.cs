@@ -5,7 +5,7 @@ namespace IntegracaoItera.Interfaces;
 public interface IClientService
 {
     
-    Task<ClientResponseDto> SendResultAsync(Guid documentId, CancellationToken cancellationToken = default);
+    Task<ClientResponseDto> SendResultAsync(string cnpj, CancellationToken cancellationToken = default);
 
     Task<bool> SetContentAsync(ClientRequestDto request, CancellationToken cancellationToken = default);
 }

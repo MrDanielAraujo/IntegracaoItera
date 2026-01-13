@@ -5,6 +5,117 @@
     "version": "1.0"
   },
   "paths": {
+    "/ClientApi/UploadDocument": {
+      "post": {
+        "tags": [
+          "IntraCred - Endpoints Diretos"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Cnpj": {
+                    "type": "string"
+                  },
+                  "Arquivos": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ClientArquivoDto"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "Cnpj": {
+                  "style": "form"
+                },
+                "Arquivos": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/ClientApi/Result": {
+      "post": {
+        "tags": [
+          "IntraCred - Endpoints Diretos"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Cnpj": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Cnpj": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/ServerApi/GetAccessToken": {
       "get": {
         "tags": [
@@ -199,6 +310,33 @@
   },
   "components": {
     "schemas": {
+      "ClientArquivoDto": {
+        "type": "object",
+        "properties": {
+          "ano": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "dataCadastro": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "ProblemDetails": {
         "type": "object",
         "properties": {

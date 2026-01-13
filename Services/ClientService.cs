@@ -1,35 +1,62 @@
 ﻿using IntegracaoItera.Data.DTOs;
+using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
+using IntegracaoItera.Models;
 
 namespace IntegracaoItera.Services;
 
-public class ClientService(IApiClient apiClient, IServerService serverService) : IClientService
+public class ClientService(IApiClient apiClient, IClientServerService clientServerService, IDocumentoRepository documentoService) : IClientService
 {
 
     private readonly IApiClient _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
-    private readonly IServerService _serverService = serverService ?? throw new ArgumentNullException(nameof(serverService));
+    private readonly IClientServerService _clientServerService = clientServerService ?? throw new ArgumentNullException(nameof(clientServerService));
+    private readonly IDocumentoRepository _documentoService = documentoService ?? throw new ArgumentNullException(nameof(documentoService));
 
-    public async Task<ClientResponseDto> SendResultAsync(string cnpj, CancellationToken cancellationToken = default)
+    public async Task<MensagemRetornoDto> SendResultAsync(string cnpj, CancellationToken cancellationToken = default)
     {
-        // 1) Buscar o registro no banco de dados atravez do cnpj, obeter sempre o ultivo registro enviado.
-        // 1.1) varificar se o status campo ServerStatus esta com o status de successo. caso não esteja cancelar. 
-        // 2) Enviar o campo ServerResult e ClientCnpj
+        var documento = await _documentoService.ObterPorCnpjAsync(cnpj, cancellationToken);
 
-        var result = await _apiClient.SetResultAsync(new ClientResponseDto(), cancellationToken);
-        
-        // 3) Atualizar o registro campo ClientStatus como Devolvido.
+        if (documento == null) return new MensagemRetornoDto(400, "O Documento não foi encontrado!");
+        if (documento!.ServerStatus != (int)ServerStatus.ProcessadoComSucesso ) return new MensagemRetornoDto(400, "O documento ainda não se encontra processado!");
 
-        throw new NotImplementedException();
+        var clientResponseDto = new ClientResponseDto()
+        {
+            Cnpj = documento.ClientCnpj,
+            Result = documento.ServerResult!,
+        };
+
+        try
+        {
+            var result = await _apiClient.SetResultAsync(clientResponseDto, cancellationToken);
+
+            documento.ClientStatus = (int)ClientStatus.Devolvido;
+
+            await _documentoService.AtualizarAsync(documento, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            return new MensagemRetornoDto(400, ex.Message);
+        }
+
+
+        return new MensagemRetornoDto(200, "success");
     }
 
-    public Task<bool> SetContentAsync(ClientRequestDto request, CancellationToken cancellationToken = default)
+    public async Task<bool> SetContentAsync(ClientRequestDto request, CancellationToken cancellationToken = default)
     {
         // 1) Validar os Dados.
         // 1.1) Filtrar os dados.
-        // 2) Incluir registro no banco de dados com o campo ClientStatus = Recebido
         
-        // 3) chamar o server para enviar os dados. ServerService.SendContentAsync
-        _serverService.SendContentAsync();
+        var documento = new Documento()
+        {
+            Id = Guid.NewGuid(),
+            ClientStatus = (int)ClientStatus.Recebido
+        };
+
+        await _documentoService.AdicionarAsync(documento, cancellationToken);
+
+        
+         await _clientServerService.ServerSendContentAsync(documento.Id, cancellationToken);
 
         throw new NotImplementedException();
     }

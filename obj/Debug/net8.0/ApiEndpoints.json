@@ -1,5 +1,88 @@
 [
   {
+    "ContainingType": "IntegracaoItera.Controllers.ClientApiController",
+    "Method": "Result",
+    "RelativePath": "ClientApi/Result",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Cnpj",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "IntraCred - Endpoints Diretos"
+    ]
+  },
+  {
+    "ContainingType": "IntegracaoItera.Controllers.ClientApiController",
+    "Method": "UploadDocument",
+    "RelativePath": "ClientApi/UploadDocument",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Cnpj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Arquivos",
+        "Type": "System.Collections.Generic.List\u00601[[IntegracaoItera.Data.DTOs.ClientArquivoDto, IntegracaoItera, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "IntraCred - Endpoints Diretos"
+    ]
+  },
+  {
     "ContainingType": "IntegracaoItera.Controllers.ServerApiController",
     "Method": "GetAccessToken",
     "RelativePath": "ServerApi/GetAccessToken",

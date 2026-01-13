@@ -9,9 +9,9 @@ namespace IntegracaoItera.Controllers;
 [Route("[controller]")]
 [Produces("application/json")]
 [Tags("IntraCred - Endpoints Diretos")]
-public class ClientApiController(IClientService clientService ) : ControllerBase
+public class ClientApiController(IClientServerService clientService ) : ControllerBase
 {
-    private readonly IClientService _clientService = clientService ?? throw new ArgumentNullException(nameof(clientService));
+    private readonly IClientServerService _clientService = clientService ?? throw new ArgumentNullException(nameof(clientService));
 
     [HttpPost("UploadDocument")]
     [Consumes("multipart/form-data")]
@@ -32,7 +32,7 @@ public class ClientApiController(IClientService clientService ) : ControllerBase
             return BadRequest("O CNPJ é obrigatório.");
         }
 
-        var result = await _clientService.SetContentAsync( request, cancellationToken );
+        var result = await _clientService.ClientSetContentAsync( request, cancellationToken );
         
 
         return Ok(result);
@@ -53,7 +53,7 @@ public class ClientApiController(IClientService clientService ) : ControllerBase
             return BadRequest("O CNPJ é obrigatório.");
         }
 
-        var result = await _clientService.SendResultAsync(Cnpj, cancellationToken);
+        var result = await _clientService.ClientSendResultAsync(Cnpj, cancellationToken);
 
 
         return Ok(result);

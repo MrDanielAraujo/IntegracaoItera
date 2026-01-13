@@ -30,5 +30,12 @@ public enum ServerStatus
     /// Erro ocorrido durante o processamento
     /// ou comunicação com o Server.
     /// </summary>
-    Erro = 5
+    Erro = 5,
+
+    /// <summary>
+    /// Documento recebido do Cliente e persistido,
+    /// mas ainda não enviado para a Server.
+    /// </summary>
+    Concluido = 6
+
 }

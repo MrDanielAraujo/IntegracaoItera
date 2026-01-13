@@ -1,6 +1,6 @@
 ﻿namespace IntegracaoItera.Models;
 
-public class IntegraArquivo
+public class Documento
 {
     // Controle interno
     public Guid Id { get; set; }

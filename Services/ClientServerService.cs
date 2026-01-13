@@ -23,6 +23,8 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
     /// <returns></returns>
     public async Task<MensagemRetornoDto> ClientSendResultAsync(string cnpj, CancellationToken cancellationToken = default)
     {
+        if (string.IsNullOrEmpty(cnpj)) return new MensagemRetornoDto(400, "O Cnpj é obrigatório!");
+
         // vai buscar o documento no banco de dados.
         var documento = await _documentoService.ObterPorCnpjAsync(cnpj, cancellationToken);
 

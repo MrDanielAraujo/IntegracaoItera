@@ -12,28 +12,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "Cnpj": {
-                    "type": "string"
-                  },
-                  "Arquivos": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ClientArquivoDto"
-                    }
-                  }
-                }
-              },
-              "encoding": {
-                "Cnpj": {
-                  "style": "form"
-                },
-                "Arquivos": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/ClientRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientRequestDto"
               }
             }
           }
@@ -65,26 +56,26 @@
         }
       }
     },
-    "/ClientApi/Result": {
+    "/ClientApi/EnviaConteudoProcessado": {
       "post": {
         "tags": [
           "IntraCred - Endpoints Diretos"
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "Cnpj": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "Cnpj": {
-                  "style": "form"
-                }
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
               }
             }
           }
@@ -306,6 +297,57 @@
           }
         }
       }
+    },
+    "/ProcessarDocumentos/Processar": {
+      "post": {
+        "tags": [
+          "Prossesamento Documentos"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -333,6 +375,23 @@
           "dataCadastro": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientRequestDto": {
+        "type": "object",
+        "properties": {
+          "cnpj": {
+            "type": "string",
+            "nullable": true
+          },
+          "arquivos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClientArquivoDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -67,12 +67,12 @@ public class DocumentoValidadorService(IAnoDocumentoService anoDocumentoService)
             return tipo2;
         }
 
-        // cria uma nova stancia de arquivo.
-        var arquivoFinal = new ClientArquivoDto();
-
         // recebe ou o tipo 1 como prioridade ou o tipo 2 caso a tipo um não exista.
-        arquivoFinal = tipo1 ?? tipo2;
+        var arquivoFinal = tipo1 ?? tipo2;
 
-        return arquivoFinal!;
+        if (arquivoFinal is not null)
+            return arquivoFinal!;
+
+        throw new Exception("Não foi enviado nenum arquivo valido.");
     }
 }

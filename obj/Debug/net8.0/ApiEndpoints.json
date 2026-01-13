@@ -1,16 +1,16 @@
 [
   {
     "ContainingType": "IntegracaoItera.Controllers.ClientApiController",
-    "Method": "Result",
-    "RelativePath": "ClientApi/Result",
+    "Method": "SendContentProcessed",
+    "RelativePath": "ClientApi/EnviaConteudoProcessado",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Cnpj",
+        "Name": "cnpj",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -47,14 +47,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Cnpj",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Arquivos",
-        "Type": "System.Collections.Generic.List\u00601[[IntegracaoItera.Data.DTOs.ClientArquivoDto, IntegracaoItera, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": false
+        "Name": "request",
+        "Type": "IntegracaoItera.Data.DTOs.ClientRequestDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -80,6 +75,45 @@
     ],
     "Tags": [
       "IntraCred - Endpoints Diretos"
+    ]
+  },
+  {
+    "ContainingType": "IntegracaoItera.Controllers.ProcessarDocumentosController",
+    "Method": "Processar",
+    "RelativePath": "ProcessarDocumentos/Processar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "IntegracaoItera.Data.DTOs.ClientRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "Prossesamento Documentos"
     ]
   },
   {

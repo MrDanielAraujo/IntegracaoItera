@@ -1,7 +1,11 @@
 ﻿using IntegracaoItera.Data.DTOs;
+using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
+using IntegracaoItera.Models;
+using IntegracaoItera.Services;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
+using System.Security;
 
 namespace IntegracaoItera.Controllers;
 
@@ -9,54 +13,61 @@ namespace IntegracaoItera.Controllers;
 [Route("[controller]")]
 [Produces("application/json")]
 [Tags("IntraCred - Endpoints Diretos")]
-public class ClientApiController(IClientServerService clientService ) : ControllerBase
+public class ClientApiController(IDocumentoValidadorService documentoValidadorService, IApiClient apiClient, IDocumentoRepository documentoService) : ControllerBase
 {
-    private readonly IClientServerService _clientService = clientService ?? throw new ArgumentNullException(nameof(clientService));
+    private readonly IDocumentoValidadorService _documentoValidadorService = documentoValidadorService ?? throw new ArgumentNullException(nameof(documentoValidadorService));
+    private readonly IApiClient _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
+    private readonly IDocumentoRepository _documentoService = documentoService ?? throw new ArgumentNullException(nameof(documentoService));
 
     [HttpPost("UploadDocument")]
-    [Consumes("multipart/form-data")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> UploadDocument(
-        [FromForm] ClientRequestDto request,
+        [FromBody] ClientRequestDto request,
         CancellationToken cancellationToken)
     {
-        if (request.Arquivos == null || request.Arquivos.Count == 0)
+        var arquivoFinal = _documentoValidadorService.ResolverListaDeArquivosParaEnvio(request);
+
+        var documento = new Documento()
         {
-            return BadRequest("O arquivo é obrigatório e não pode estar vazio.");
-        }
+            Id = Guid.NewGuid(),
+            ClientCnpj = request.Cnpj,
+            ClientArquivoAno = arquivoFinal.Ano,
+            ClientArquivoTipo = arquivoFinal.Tipo,
+            ClientArquivoNome = arquivoFinal.Nome,
+            ClientArquivoContent = arquivoFinal.Content,
+            ClientArquivoDataCadastro = arquivoFinal.DataCadastro,
+            ClientStatus = (int)ClientStatus.Recebido
+        };
 
-        if (string.IsNullOrWhiteSpace(request.Cnpj))
-        {
-            return BadRequest("O CNPJ é obrigatório.");
-        }
 
-        var result = await _clientService.ClientSetContentAsync( request, cancellationToken );
-        
-
-        return Ok(result);
+        return Ok(documento);
     }
 
-    [HttpPost("Result")]
-    [Consumes("multipart/form-data")]
+    [HttpPost("EnviaConteudoProcessado")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> Result(
-        [FromForm] string Cnpj,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> SendContentProcessed([FromBody] string cnpj, CancellationToken cancellationToken)
     {
+        // verifica se o cnpj foi enviado.
+        if (string.IsNullOrEmpty(cnpj)) return BadRequest(new MensagemRetornoDto(400, "O Cnpj é obrigatório!"));
 
-        if (string.IsNullOrWhiteSpace(Cnpj))
+        // vai buscar o documento no banco de dados.
+        var documento = await _documentoService.ObterPorCnpjAsync(cnpj, cancellationToken);
+
+        // verifica se o documento foi encontrado.
+        if (documento == null) return BadRequest(new MensagemRetornoDto(400, "O Documento não foi encontrado!"));
+
+        // Cria uma nova instancia do objeto que o cliente esta aguardadno.
+        var clientResponseDto = new ClientResponseDto()
         {
-            return BadRequest("O CNPJ é obrigatório.");
-        }
+            Cnpj = documento.ClientCnpj,
+            Result = documento.ServerResult!,
+        };
 
-        var result = await _clientService.ClientSendResultAsync(Cnpj, cancellationToken);
-
-
-        return Ok(result);
+        return Ok(await _apiClient.SetResultAsync(clientResponseDto, cancellationToken));
     }
-
+        
 }

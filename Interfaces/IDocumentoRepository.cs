@@ -14,4 +14,6 @@ public interface IDocumentoRepository
 
     Task<IReadOnlyCollection<Documento>> ObterPendentesProcessamentoAsync(
         CancellationToken cancellationToken);
+
+    Task<List<Documento>?> ObterPorStatusjAsync(CancellationToken cancellationToken);
 }

@@ -8,16 +8,20 @@ namespace IntegracaoItera.Controllers;
 [Route("[controller]")]
 [Produces("application/json")]
 [Tags("Prossesamento Documentos")]
-public class ProcessarDocumentosController(IClientServerService clientService) : ControllerBase
+public class ProcessarDocumentosController(IClientServerService clientServerService) : ControllerBase
 {
-    private readonly IClientServerService _clientService = clientService ?? throw new ArgumentNullException(nameof(clientService));
+    private readonly IClientServerService _clientServerService = clientServerService ?? throw new ArgumentNullException(nameof(clientServerService));
 
     [HttpPost("Processar")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Processar([FromBody] ClientRequestDto request, CancellationToken cancellationToken)
-        => Ok(await _clientService.ClientSetContentAsync(request, cancellationToken));
+    {
+        var retorno = await _clientServerService.ClientSetContentAsync(request, cancellationToken);
+        
+        return (retorno.CodigoStatus != 200) ? BadRequest(retorno.DescricaoStatus) : Ok();
+    }
 }
     
 

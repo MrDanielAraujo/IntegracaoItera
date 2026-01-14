@@ -1,9 +1,9 @@
 ﻿using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 
-namespace IntegracaoItera.Services;
+namespace IntegracaoItera.Common;
 
-public static class PdfMergeService
+public static class PdfMeneger
 {
     public static byte[] MergePdfs(byte[] pdfBytes1, byte[] pdfBytes2)
     {

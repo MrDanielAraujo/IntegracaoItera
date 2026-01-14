@@ -1,4 +1,5 @@
-﻿using IntegracaoItera.Data.DTOs;
+﻿using IntegracaoItera.Common;
+using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
@@ -24,11 +25,22 @@ public class ClientApiController(IDocumentoValidadorService documentoValidadorSe
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> UploadDocument(
-        [FromBody] ClientRequestDto request,
-        CancellationToken cancellationToken)
+        [FromBody] ClientRequestDto request )
     {
-        var arquivoFinal = _documentoValidadorService.ResolverListaDeArquivosParaEnvio(request);
 
+        if (!_documentoValidadorService.ValidarCnpj(request.Cnpj)) return BadRequest("O CNPJ informado é invalido!");
+
+        ClientArquivoDto arquivoFinal;
+
+        try
+        {
+            arquivoFinal = _documentoValidadorService.ResolverListaDeArquivosParaEnvio(request.Arquivos);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+            
         var documento = new Documento()
         {
             Id = Guid.NewGuid(),

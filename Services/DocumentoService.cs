@@ -1,7 +1,9 @@
 ﻿using IntegracaoItera.Data;
+using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace IntegracaoItera.Services;
 
@@ -43,5 +45,14 @@ public class DocumentoService(IntegraDbContext context) : IDocumentoRepository
                 .FirstOrDefaultAsync(
                     d => d.ClientCnpj == cnpj,
                     cancellationToken);
+    }
+
+    public async Task<List<Documento>?> ObterPorStatusjAsync(CancellationToken cancellationToken)
+    {
+        return await _context.Set<Documento>()
+                .Where(
+                    d => d.ServerStatus == (int)ServerStatus.EnviadoParaServer || 
+                    d.ServerStatus == (int)ServerStatus.Processando
+                    ).ToListAsync(cancellationToken);
     }
 }

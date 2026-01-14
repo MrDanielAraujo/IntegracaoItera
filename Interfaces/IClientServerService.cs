@@ -16,4 +16,6 @@ public interface IClientServerService
 
 
     Task<MensagemRetornoDto> ServerSendContentAsync(Documento documento, CancellationToken cancellationToken = default);
+
+    Task<MensagemRetornoDto> ServerResendContentAsync(Guid documentoId, CancellationToken cancellationToken = default);
 }

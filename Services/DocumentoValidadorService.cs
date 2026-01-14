@@ -1,7 +1,9 @@
-﻿using IntegracaoItera.Data.DTOs;
+﻿using IntegracaoItera.Common;
+using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
+using System;
 
 namespace IntegracaoItera.Services;
 
@@ -12,21 +14,25 @@ public class DocumentoValidadorService(IAnoDocumentoService anoDocumentoService)
     /// <summary>
     /// 
     /// </summary>
+    /// <param name="cnpj"></param>
+    /// <returns></returns>
+    public bool ValidarCnpj (string? cnpj)
+        => cnpj is not null && cnpj.Length != 0 && CnpjValidator.IsValid(cnpj);
+           
+    /// <summary>
+    /// 
+    /// </summary>
     /// <param name="requestDto"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public ClientArquivoDto ResolverListaDeArquivosParaEnvio(ClientRequestDto requestDto)
+    public ClientArquivoDto ResolverListaDeArquivosParaEnvio(List<ClientArquivoDto> arquivos)
     {
         // Verifica se contem arquivos no objeto.
-        if (requestDto.Arquivos is null || requestDto.Arquivos.Count == 0)
+        if (arquivos is null || arquivos.Count == 0)
             throw new Exception("Nenhum arquivo foi informado.");
 
-        // Verifica se o Cnpj foi enviado. 
-        if (requestDto.Cnpj is null || requestDto.Cnpj.Length == 0)
-            throw new Exception("Nenum numero de Cnpj foi informado.");
-
         // Filtrar por anos válidos
-        var arquivosAnoValido = requestDto.Arquivos
+        var arquivosAnoValido = arquivos
             .Where(a => _anoDocumentoService.AnoEhValido(a.Ano)).ToList();
 
         // Verifica se temos aqruivos validos dentro dos anos validos.
@@ -56,14 +62,14 @@ public class DocumentoValidadorService(IAnoDocumentoService anoDocumentoService)
         // Este caso retorna um tipo 1 com o tipo 9 junto (balanço com Dre)
         if (tipo9 is not null && tipo1 is not null)
         {
-            tipo1.Content = PdfMergeService.MergePdfs(tipo1.Content, tipo9.Content);
+            tipo1.Content = PdfMeneger.MergePdfs(tipo1.Content, tipo9.Content);
             return tipo1;
         }
 
         // Este caso retorna um tipo 2 com o tipo 9 junto (balancete com Dre)
         if (tipo9 is not null && tipo2 is not null)
         {
-            tipo2.Content = PdfMergeService.MergePdfs(tipo2.Content, tipo9.Content);
+            tipo2.Content = PdfMeneger.MergePdfs(tipo2.Content, tipo9.Content);
             return tipo2;
         }
 

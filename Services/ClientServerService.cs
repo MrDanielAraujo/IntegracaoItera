@@ -1,4 +1,5 @@
-﻿using IntegracaoItera.Data.DTOs;
+﻿using IntegracaoItera.Common;
+using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
@@ -24,6 +25,8 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
     public async Task<MensagemRetornoDto> ClientSendResultAsync(string cnpj, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrEmpty(cnpj)) return new MensagemRetornoDto(400, "O Cnpj é obrigatório!");
+
+        if (!CnpjValidator.IsValid(cnpj)) return new MensagemRetornoDto(400, "O Cnpj informado é invalido");
 
         // vai buscar o documento no banco de dados.
         var documento = await _documentoService.ObterPorCnpjAsync(cnpj, cancellationToken);
@@ -72,8 +75,18 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
     /// <exception cref="NotImplementedException"></exception>
     public async Task<MensagemRetornoDto> ClientSetContentAsync(ClientRequestDto request, CancellationToken cancellationToken = default)
     {
-        // Valida e filtra os arquivos recebidos.
-        var arquivoFinal = _documentoValidadorService.ResolverListaDeArquivosParaEnvio(request);
+        if (!_documentoValidadorService.ValidarCnpj(request.Cnpj)) return new MensagemRetornoDto(400, "O Cnpj informado é invalido");
+
+        ClientArquivoDto arquivoFinal;
+
+        try
+        {
+            arquivoFinal = _documentoValidadorService.ResolverListaDeArquivosParaEnvio(request.Arquivos);
+        }
+        catch (Exception ex)
+        {
+            return new MensagemRetornoDto(400, ex.Message);
+        }
 
         // Cria o novo documento.
         var documento = new Documento()
@@ -221,7 +234,7 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
             await _documentoService.AtualizarAsync(documento, cancellationToken);
 
             // Inicia o processo de verificação de status.
-            return await ServerCheckStatusAsync(documento, cancellationToken);
+            /// return await ServerCheckStatusAsync(documento, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -238,5 +251,40 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
             // retorna com a informação de erro.
             return new MensagemRetornoDto(400, ex.Message);
         }
+
+        return new MensagemRetornoDto(200, "sucess");
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="documento"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<MensagemRetornoDto> ServerResendContentAsync(Guid documentoId, CancellationToken cancellationToken = default)
+    {
+        // Obtem o documento atravez do ID
+        var documento = await _documentoService.ObterPorIdAsync(documentoId, cancellationToken);
+        
+        // verifica se o objeto documento foi enviado corretamente.
+        if (documento is null) return new MensagemRetornoDto(400, "Documento não encontrado!");
+
+        // Casos que o Documento não pode ser reenviados.
+        if (documento.ServerStatus == (int)ServerStatus.Concluido ||
+            documento.ServerStatus == (int)ServerStatus.Processando  ||
+            documento.ServerStatus == (int)ServerStatus.EnviadoParaServer ||
+            documento.ClientStatus == (int)ClientStatus.Devolvido) return new MensagemRetornoDto(400, "Esse documento não pode ser reenviado!");
+
+        // Limpa os campos para um novo reenvio.
+        documento.ServerStatus = (int)ServerStatus.Recebido;
+        documento.ServerMessage = string.Empty;
+        documento.ServerId = Guid.Empty;
+        documento.ServerResult = string.Empty;
+
+        // Atauliza o documento no banco.
+        await _documentoService.AtualizarAsync(documento, cancellationToken);
+
+        // Clama o metodo que vai reenviar o documento ao servidor.
+        return await ServerSendContentAsync(documento, cancellationToken);
     }
 }

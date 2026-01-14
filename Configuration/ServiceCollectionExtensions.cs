@@ -43,20 +43,24 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IClientServerService, ClientServerService>();
         services.AddScoped<IAnoDocumentoService, AnoDocumentoService>();
         services.AddScoped<IDocumentoValidadorService, DocumentoValidadorService>();
-    
+        services.AddScoped<IDocumentoRepository, DocumentoService>();
 
-            // Registra serviço de processamento de documentos (versão anterior)
-            // services.AddScoped<IDocumentProcessingService, DocumentProcessingService>();
+        services.AddHostedService<DocumentoStatusWorkerService>();
 
-            // ===== Novos serviços (especificação IntraCred) =====
+        services.Configure<DocumentPollingOptions>(configuration.GetSection("DocumentPolling"));
 
-            // Serviço de validação
-            // services.AddScoped<IDocumentoIntraCredValidationService, DocumentoIntraCredValidationService>();
+        // Registra serviço de processamento de documentos (versão anterior)
+        // services.AddScoped<IDocumentProcessingService, DocumentProcessingService>();
 
-            // Serviço de processamento
-            // services.AddScoped<IDocumentoIntraCredProcessingService, DocumentoIntraCredProcessingService>();
+        // ===== Novos serviços (especificação IntraCred) =====
 
-            return services;
+        // Serviço de validação
+        // services.AddScoped<IDocumentoIntraCredValidationService, DocumentoIntraCredValidationService>();
+
+        // Serviço de processamento
+        // services.AddScoped<IDocumentoIntraCredProcessingService, DocumentoIntraCredProcessingService>();
+
+        return services;
     }
 
     /// <summary>

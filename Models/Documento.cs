@@ -1,5 +1,8 @@
-﻿namespace IntegracaoItera.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
+namespace IntegracaoItera.Models;
+
+[Table("IteraControle")]
 public class Documento
 {
     // Controle interno

@@ -117,6 +117,45 @@
     ]
   },
   {
+    "ContainingType": "IntegracaoItera.Controllers.ProcessarDocumentosController",
+    "Method": "ReProcessar",
+    "RelativePath": "ProcessarDocumentos/ReProcessar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "documentId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "Prossesamento Documentos"
+    ]
+  },
+  {
     "ContainingType": "IntegracaoItera.Controllers.ServerApiController",
     "Method": "GetAccessToken",
     "RelativePath": "ServerApi/GetAccessToken",

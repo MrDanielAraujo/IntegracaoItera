@@ -22,6 +22,6 @@ public class Documento
     public int ClientArquivoAno { get; set; }
     public int ClientArquivoTipo { get; set; }
     public string ClientArquivoNome { get; set; } = null!;
-    public DateTime ClientArquivoDataCadastro { get; set; }
+    public string ClientArquivoDataCadastro { get; set; } = null!;
     public byte[] ClientArquivoContent { get; set; } = null!;
 }

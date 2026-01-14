@@ -1,4 +1,5 @@
 ﻿using IntegracaoItera.Data.DTOs;
+using IntegracaoItera.Models;
 
 namespace IntegracaoItera.Interfaces;
 
@@ -44,5 +45,9 @@ public interface IApiServer
         string source,
         string description,
         string cnpj,
+        CancellationToken cancellationToken = default);
+
+    Task<string> UploadDocumentAsync(
+       Documento documento,
         CancellationToken cancellationToken = default);
 }

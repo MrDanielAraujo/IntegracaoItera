@@ -49,7 +49,7 @@ public class ClientApiController(IDocumentoValidadorService documentoValidadorSe
             ClientArquivoTipo = arquivoFinal.Tipo,
             ClientArquivoNome = arquivoFinal.Nome,
             ClientArquivoContent = arquivoFinal.Content,
-            ClientArquivoDataCadastro = arquivoFinal.DataCadastro,
+            ClientArquivoDataCadastro = arquivoFinal.DataCadastro.ToString(),
             ClientStatus = (int)ClientStatus.Recebido
         };
 

@@ -97,7 +97,7 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
             ClientArquivoTipo = arquivoFinal.Tipo,
             ClientArquivoNome = arquivoFinal.Nome,
             ClientArquivoContent = arquivoFinal.Content,
-            ClientArquivoDataCadastro = arquivoFinal.DataCadastro,
+            ClientArquivoDataCadastro = arquivoFinal.DataCadastro.ToString(),
             ClientStatus = (int)ClientStatus.Recebido,
             ServerStatus = (int)ServerStatus.Recebido
         };
@@ -182,8 +182,9 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
             await documentoService.AtualizarAsync(documento, cancellationToken);
 
             // chama o metodo que vai enviar o doumento para o client.
-            return await ClientSendResultAsync(documento.ClientCnpj, cancellationToken);
+            //return await ClientSendResultAsync(documento.ClientCnpj, cancellationToken);
 
+            return new MensagemRetornoDto(200, "success");
         }
         catch (Exception ex)
         {
@@ -205,34 +206,34 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
         // cria uma instancia para o arquivo para ser enviado na api do servidor.
         IFormFile formFile;
 
-        // carrega o arquivo que estava em byte[] para o formato de Envio por formulario.
-        using (var stream = new MemoryStream(documento!.ClientArquivoContent))
-        {
-            formFile = new FormFile(baseStream: stream,
-               baseStreamOffset: 0,
-               length: stream.Length,
-               name: "file", // The name of the form field, typically "file"
-               fileName: documento.ClientArquivoNome
-            );
-        }
-
         try
         {
-            // Faz o envio do arquivo via Http post para o Endpoint do Servidor.
-            var httpResponse = await _apiServer.UploadDocumentAsync( formFile, documento.ClientArquivoNome, "", documento.ClientCnpj, cancellationToken );
-
-            // Obtem o resultado e converte para um tipo valido de chave Guid.
-            Guid serverId = Guid.Parse(httpResponse);
-
-            // Atualiza o objeto Documento para o Status de Enviado para o Servidor.
-            documento.ServerStatus = (int)ServerStatus.EnviadoParaServer;
+            // carrega o arquivo que estava em byte[] para o formato de Envio por formulario.
+            using (var stream = new MemoryStream(documento!.ClientArquivoContent))
+            {
+                formFile = new FormFile(baseStream: stream,
+                   baseStreamOffset: 0,
+                   length: stream.Length,
+                   name: "file", // The name of the form field, typically "file"
+                   fileName: documento.ClientArquivoNome
+                );
             
-            // Atualiza o documento com o valor de Guid recebido apoz o envio ao servidor.
-            documento.ServerId = serverId;
+                // Faz o envio do arquivo via Http post para o Endpoint do Servidor.
+                var httpResponse = await _apiServer.UploadDocumentAsync( documento, cancellationToken );
             
-            // Efetua a alteração no banco de dados. 
-            await _documentoService.AtualizarAsync(documento, cancellationToken);
 
+                // Obtem o resultado e converte para um tipo valido de chave Guid.
+                Guid serverId = Guid.Parse(httpResponse);
+
+                // Atualiza o objeto Documento para o Status de Enviado para o Servidor.
+                documento.ServerStatus = (int)ServerStatus.EnviadoParaServer;
+            
+                // Atualiza o documento com o valor de Guid recebido apoz o envio ao servidor.
+                documento.ServerId = serverId;
+            
+                // Efetua a alteração no banco de dados. 
+                await _documentoService.AtualizarAsync(documento, cancellationToken);
+            } 
             // Inicia o processo de verificação de status.
             /// return await ServerCheckStatusAsync(documento, cancellationToken);
         }

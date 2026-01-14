@@ -7,72 +7,32 @@
       "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:services\\clientserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\interfaces\\iclientserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:interfaces\\iclientserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\common\\cnpjvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:common\\cnpjvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\controllers\\clientapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:controllers\\clientapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\services\\documentovalidadorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:services\\documentovalidadorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\interfaces\\idocumentovalidadorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:interfaces\\idocumentovalidadorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\models\\documento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:models\\documento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\services\\documentostatusworkerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:services\\documentostatusworkerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\configuration\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:configuration\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\services\\apiserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:services\\apiserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\services\\documentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:services\\documentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\interfaces\\idocumentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:interfaces\\idocumentorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\configuration\\documentpollingoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:configuration\\documentpollingoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\controllers\\processardocumentoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:controllers\\processardocumentoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\data\\enums\\serverstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:data\\enums\\serverstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\interfaces\\iapiserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:interfaces\\iapiserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\common\\pdfmeneger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:common\\pdfmeneger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\services\\authorizedhttpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:services\\authorizedhttpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\data\\dtos\\clientarquivodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:data\\dtos\\clientarquivodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\models\\documento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:models\\documento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\controllers\\serverapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:controllers\\serverapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|c:\\users\\daniel.gomes\\source\\repos\\integracaoitera\\controllers\\clientapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A26FAE61-F7CD-CF06-A96A-E62C38DFAF61}|IntegracaoItera.csproj|solutionrelative:controllers\\clientapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,136 +42,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IClientServerService.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Interfaces\\IClientServerService.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IClientServerService.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Interfaces\\IClientServerService.cs",
-              "RelativeToolTip": "Interfaces\\IClientServerService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAB3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T17:55:58.405Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": ".env",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\.env",
-              "RelativeDocumentMoniker": ".env",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\.env",
-              "RelativeToolTip": ".env",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAACIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-14T16:12:41.417Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DocumentPollingOptions.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Configuration\\DocumentPollingOptions.cs",
-              "RelativeDocumentMoniker": "Configuration\\DocumentPollingOptions.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Configuration\\DocumentPollingOptions.cs",
-              "RelativeToolTip": "Configuration\\DocumentPollingOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T16:12:06.784Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Configuration\\ServiceCollectionExtensions.cs",
-              "RelativeDocumentMoniker": "Configuration\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Configuration\\ServiceCollectionExtensions.cs",
-              "RelativeToolTip": "Configuration\\ServiceCollectionExtensions.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwC0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T16:06:52.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IDocumentoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Interfaces\\IDocumentoRepository.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IDocumentoRepository.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Interfaces\\IDocumentoRepository.cs",
-              "RelativeToolTip": "Interfaces\\IDocumentoRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T14:40:52.442Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DocumentoService.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\DocumentoService.cs",
-              "RelativeDocumentMoniker": "Services\\DocumentoService.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\DocumentoService.cs",
-              "RelativeToolTip": "Services\\DocumentoService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T14:32:15.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DocumentoStatusWorkerService.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\DocumentoStatusWorkerService.cs",
-              "RelativeDocumentMoniker": "Services\\DocumentoStatusWorkerService.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\DocumentoStatusWorkerService.cs",
-              "RelativeToolTip": "Services\\DocumentoStatusWorkerService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAkwCwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T14:30:31.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "IDocumentoValidadorService.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Interfaces\\IDocumentoValidadorService.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IDocumentoValidadorService.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Interfaces\\IDocumentoValidadorService.cs",
-              "RelativeToolTip": "Interfaces\\IDocumentoValidadorService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAJAAAAAAAAAA==",
+              "Title": "AuthorizedHttpClientService.cs",
+              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\AuthorizedHttpClientService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthorizedHttpClientService.cs",
+              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\AuthorizedHttpClientService.cs",
+              "RelativeToolTip": "Services\\AuthorizedHttpClientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T13:04:48.663Z",
+              "WhenOpened": "2026-01-14T20:00:06.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IApiServer.cs",
+              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Interfaces\\IApiServer.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IApiServer.cs",
+              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Interfaces\\IApiServer.cs",
+              "RelativeToolTip": "Interfaces\\IApiServer.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAgwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T19:36:59.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApiServerService.cs",
+              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\ApiServerService.cs",
+              "RelativeDocumentMoniker": "Services\\ApiServerService.cs",
+              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\ApiServerService.cs",
+              "RelativeToolTip": "Services\\ApiServerService.cs",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAIwKYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T19:13:06.843Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CnpjValidator.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Common\\CnpjValidator.cs",
-              "RelativeDocumentMoniker": "Common\\CnpjValidator.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Common\\CnpjValidator.cs",
-              "RelativeToolTip": "Common\\CnpjValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABEAAAAAAAAAA==",
+              "Title": "DocumentoService.cs",
+              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\DocumentoService.cs",
+              "RelativeDocumentMoniker": "Services\\DocumentoService.cs",
+              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\DocumentoService.cs",
+              "RelativeToolTip": "Services\\DocumentoService.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAIA2wCgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T12:52:20.576Z",
+              "WhenOpened": "2026-01-14T18:51:33.074Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "PdfMeneger.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Common\\PdfMeneger.cs",
-              "RelativeDocumentMoniker": "Common\\PdfMeneger.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Common\\PdfMeneger.cs",
-              "RelativeToolTip": "Common\\PdfMeneger.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "ClientApiController.cs",
+              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ClientApiController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClientApiController.cs",
+              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ClientApiController.cs",
+              "RelativeToolTip": "Controllers\\ClientApiController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAYwDMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T12:49:42.713Z",
+              "WhenOpened": "2026-01-14T18:54:51.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Documento.cs",
+              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Models\\Documento.cs",
+              "RelativeDocumentMoniker": "Models\\Documento.cs",
+              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Models\\Documento.cs",
+              "RelativeToolTip": "Models\\Documento.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T18:53:00.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProcessarDocumentosController.cs",
+              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ProcessarDocumentosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProcessarDocumentosController.cs",
+              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ProcessarDocumentosController.cs",
+              "RelativeToolTip": "Controllers\\ProcessarDocumentosController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAqwB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T18:50:08.496Z",
               "EditorCaption": ""
             },
             {
@@ -222,98 +143,9 @@
               "RelativeDocumentMoniker": "Services\\ClientServerService.cs",
               "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\ClientServerService.cs",
               "RelativeToolTip": "Services\\ClientServerService.cs",
-              "ViewState": "AgIAAP8AAAAAAAAAAAAkwBYBAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAIwOEAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T12:45:45.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DocumentoValidadorService.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\DocumentoValidadorService.cs",
-              "RelativeDocumentMoniker": "Services\\DocumentoValidadorService.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Services\\DocumentoValidadorService.cs",
-              "RelativeToolTip": "Services\\DocumentoValidadorService.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAApwBsAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T17:51:58.679Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ClientArquivoDto.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Data\\DTOs\\ClientArquivoDto.cs",
-              "RelativeDocumentMoniker": "Data\\DTOs\\ClientArquivoDto.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Data\\DTOs\\ClientArquivoDto.cs",
-              "RelativeToolTip": "Data\\DTOs\\ClientArquivoDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T16:39:37.339Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ProcessarDocumentosController.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ProcessarDocumentosController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProcessarDocumentosController.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ProcessarDocumentosController.cs",
-              "RelativeToolTip": "Controllers\\ProcessarDocumentosController.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAtwAwAAACVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T15:59:14.397Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ServerApiController.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ServerApiController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ServerApiController.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ServerApiController.cs",
-              "RelativeToolTip": "Controllers\\ServerApiController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T15:58:00.12Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ClientApiController.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ClientApiController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ClientApiController.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Controllers\\ClientApiController.cs",
-              "RelativeToolTip": "Controllers\\ClientApiController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAmwBsAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T15:57:31.527Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ServerStatus.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Data\\Enums\\ServerStatus.cs",
-              "RelativeDocumentMoniker": "Data\\Enums\\ServerStatus.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Data\\Enums\\ServerStatus.cs",
-              "RelativeToolTip": "Data\\Enums\\ServerStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T14:51:16.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Documento.cs",
-              "DocumentMoniker": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Models\\Documento.cs",
-              "RelativeDocumentMoniker": "Models\\Documento.cs",
-              "ToolTip": "C:\\Users\\daniel.gomes\\source\\repos\\IntegracaoItera\\Models\\Documento.cs",
-              "RelativeToolTip": "Models\\Documento.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T14:46:59.119Z",
+              "WhenOpened": "2026-01-14T18:37:13.404Z",
               "EditorCaption": ""
             }
           ]

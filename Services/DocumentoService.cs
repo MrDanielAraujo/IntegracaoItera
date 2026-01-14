@@ -14,16 +14,17 @@ public class DocumentoService(IntegraDbContext context) : IDocumentoRepository
 
     public async Task AdicionarAsync(Documento documento, CancellationToken cancellationToken)
     {
-        await _context.Set<Documento>()
+       await _context.Set<Documento>()
                 .AddAsync(documento, cancellationToken);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public Task AtualizarAsync(Documento documento, CancellationToken cancellationToken)
+    public async Task AtualizarAsync(Documento documento, CancellationToken cancellationToken)
     {
         _context.Set<Documento>().Update(documento);
-        _context.SaveChanges();
-        return Task.CompletedTask;
+       
+        await _context.SaveChangesAsync(cancellationToken);
+
     }
 
     public Task<IReadOnlyCollection<Documento>> ObterPendentesProcessamentoAsync(CancellationToken cancellationToken)

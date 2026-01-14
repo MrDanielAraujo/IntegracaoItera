@@ -22,6 +22,17 @@ public class ProcessarDocumentosController(IClientServerService clientServerServ
         
         return (retorno.CodigoStatus != 200) ? BadRequest(retorno.DescricaoStatus) : Ok();
     }
+
+    [HttpPost("ReProcessar")]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> ReProcessar([FromBody] Guid documentId, CancellationToken cancellationToken)
+    {
+        var retorno = await _clientServerService.ServerResendContentAsync(documentId, cancellationToken);
+
+        return (retorno.CodigoStatus != 200) ? BadRequest(retorno.DescricaoStatus) : Ok();
+    }
 }
     
 

@@ -1,6 +1,7 @@
 ﻿using IntegracaoItera.Configuration;
 using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Interfaces;
+using IntegracaoItera.Models;
 using Microsoft.Extensions.Options;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -106,7 +107,7 @@ public class ApiServerService(
         using var formData = new MultipartFormDataContent();
 
         // Adiciona o arquivo - copia para MemoryStream para evitar problemas com stream fechado
-        using var memoryStream = new MemoryStream();
+        var memoryStream = new MemoryStream();
         await file.CopyToAsync(memoryStream, cancellationToken);
         memoryStream.Position = 0;
 
@@ -125,5 +126,45 @@ public class ApiServerService(
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadAsStringAsync(cancellationToken);
+    }
+
+    public async Task<string> UploadDocumentAsync(Documento document, CancellationToken cancellationToken = default)
+    {
+        if (document.ClientArquivoContent is null || document.ClientArquivoContent.Length == 0)
+        {
+            throw new ArgumentException("O arquivo é obrigatório e não pode estar vazio.", nameof(document.ClientArquivoContent));
+        }
+
+        if (string.IsNullOrEmpty(document.ClientCnpj))
+        {
+            throw new ArgumentException("O Cnpj é uma informação obrigatoria.", nameof(document.ClientArquivoContent));
+        }
+
+        using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(_settings, cancellationToken);
+
+        using var formData = new MultipartFormDataContent();
+
+        // Adiciona o arquivo - copia para MemoryStream para evitar problemas com stream fechado
+        var memoryStream = new MemoryStream(document.ClientArquivoContent);
+        //await file.CopyToAsync(memoryStream, cancellationToken);
+        //memoryStream.Position = 0;
+
+        var streamContent = new StreamContent(memoryStream);
+        streamContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+        formData.Add(streamContent, "file", document.ClientArquivoNome);
+
+        // Adiciona os campos de texto
+        formData.Add(new StringContent(string.Empty), "source");
+        formData.Add(new StringContent(string.Empty), "description");
+        formData.Add(new StringContent(document.ClientCnpj ?? string.Empty), "cnpj");
+
+        var endpoint = (EndpointSettings)_settings.Endpoints;
+
+        var response = await httpClient.PostAsync(endpoint.UploadDoc, formData, cancellationToken);
+        response.EnsureSuccessStatusCode();
+
+        var result = await response.Content.ReadAsStringAsync(cancellationToken);
+
+        return result;
     }
 }

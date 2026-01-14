@@ -85,7 +85,8 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
             ClientArquivoNome = arquivoFinal.Nome,
             ClientArquivoContent = arquivoFinal.Content,
             ClientArquivoDataCadastro = arquivoFinal.DataCadastro,
-            ClientStatus = (int)ClientStatus.Recebido
+            ClientStatus = (int)ClientStatus.Recebido,
+            ServerStatus = (int)ServerStatus.Recebido
         };
 
         try
@@ -122,9 +123,16 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
             var retorno = await _apiServer.GetStatusAsync(documento.ServerId, cancellationToken);
 
             // verifica se o resultado voltou diferente de concluido.
-            if (retorno != null && !retorno!.status.Equals("Concluido", StringComparison.OrdinalIgnoreCase))
+            if (!retorno!.status.Equals("Concluido", StringComparison.OrdinalIgnoreCase))
+            {
+                // altera o status para processando.
+                documento.ServerStatus = (int)ServerStatus.Processando;
+                // persiste no banco de dados.
+                await _documentoService.AtualizarAsync(documento, cancellationToken);
+                // Sai da checagem informando que ainda não foi concluido.
                 return new MensagemRetornoDto(400, "O Servidor ainda não concluiu o processamento!");
-
+            }
+            
             //grava satatus no banco de dados 
             documento.ServerStatus = (int)ServerStatus.ProcessadoComSucesso;
 
@@ -176,10 +184,10 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
     /// <param name="documento"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public async Task<MensagemRetornoDto> ServerSendContentAsync(Documento documento, CancellationToken cancellationToken = default)
+    public async Task<MensagemRetornoDto> ServerSendContentAsync(Documento? documento, CancellationToken cancellationToken = default)
     {
         // verifica se o objeto documento foi enviado corretamente.
-        if (documento == null) return new MensagemRetornoDto(400, "Documento não encontrado!");
+        if (documento is null) return new MensagemRetornoDto(400, "Documento não encontrado!");
 
         // cria uma instancia para o arquivo para ser enviado na api do servidor.
         IFormFile formFile;

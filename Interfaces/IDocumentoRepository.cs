@@ -12,8 +12,5 @@ public interface IDocumentoRepository
 
     Task<Documento?> ObterPorCnpjAsync(string cnpj, CancellationToken cancellationToken);
 
-    Task<IReadOnlyCollection<Documento>> ObterPendentesProcessamentoAsync(
-        CancellationToken cancellationToken);
-
-    Task<List<Documento>?> ObterPorStatusjAsync(CancellationToken cancellationToken);
+    Task<List<Documento>?> ObterPendentesProcessamentoAsync(CancellationToken cancellationToken);
 }

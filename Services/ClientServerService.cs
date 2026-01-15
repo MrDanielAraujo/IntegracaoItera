@@ -7,6 +7,13 @@ using System.Text.Json;
 
 namespace IntegracaoItera.Services;
 
+/// <summary>
+/// Essa classe é a responsavel por toda a vida de uma requizição de validação de Documento.
+/// </summary>
+/// <param name="apiClient"></param>
+/// <param name="apiServer"></param>
+/// <param name="documentoService"></param>
+/// <param name="documentoValidadorService"></param>
 public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDocumentoRepository documentoService, IDocumentoValidadorService documentoValidadorService) : IClientServerService
 {
 
@@ -14,7 +21,7 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
     private readonly IApiServer _apiServer = apiServer ?? throw new ArgumentNullException(nameof(apiServer));
     private readonly IDocumentoRepository _documentoService = documentoService ?? throw new ArgumentNullException(nameof(documentoService));
     private readonly IDocumentoValidadorService _documentoValidadorService = documentoValidadorService ?? throw new ArgumentNullException(nameof(documentoValidadorService));
-    
+
     /// <summary>
     /// Esse é o metodo que finaliza o processo.
     /// Enviando o que foi retornado do servidor para o cliente.
@@ -22,10 +29,13 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
     /// <param name="cnpj"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
+    [Obsolete("Este método está obsoleto. O cliente irá acessar o banco para obter o seu resultado.")]
     public async Task<MensagemRetornoDto> ClientSendResultAsync(string cnpj, CancellationToken cancellationToken = default)
     {
+        // Valida o CNPJ
         if (string.IsNullOrEmpty(cnpj)) return new MensagemRetornoDto(400, "O Cnpj é obrigatório!");
 
+        // Valida o CNPJ
         if (!CnpjValidator.IsValid(cnpj)) return new MensagemRetornoDto(400, "O Cnpj informado é invalido");
 
         // vai buscar o documento no banco de dados.
@@ -33,8 +43,10 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
 
         // verifica se o documento foi encontrado.
         if (documento == null) return new MensagemRetornoDto(400, "O Documento não foi encontrado!");
+        
         // verifica se o documento já foi processado
         if (documento!.ServerStatus != (int)ServerStatus.Concluido) return new MensagemRetornoDto(400, "O documento ainda não se encontra processado!");
+        
         // verifica se o documento já foi enviado ao cliente.
         if (documento!.ClientStatus == (int)ClientStatus.Devolvido) return new MensagemRetornoDto(400, "Esse documento já foi enviado ao cliente!");
 
@@ -75,20 +87,25 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
     /// <exception cref="NotImplementedException"></exception>
     public async Task<MensagemRetornoDto> ClientSetContentAsync(ClientRequestDto request, CancellationToken cancellationToken = default)
     {
+        // Validando o CNPJ informado.
         if (!_documentoValidadorService.ValidarCnpj(request.Cnpj)) return new MensagemRetornoDto(400, "O Cnpj informado é invalido");
 
+        // declara o modelo de arquivo que precisamos para enviar ao server.
         ClientArquivoDto arquivoFinal;
 
         try
         {
+            // Chama o metodo que retorna o arquivo que deve ser gravado no banco e enviar ao server para ser validado.
             arquivoFinal = _documentoValidadorService.ResolverListaDeArquivosParaEnvio(request.Arquivos);
         }
         catch (Exception ex)
         {
+            // Caso aconteça algum erro no processo de geração do arquivo, será retornado o erro..
             return new MensagemRetornoDto(400, ex.Message);
         }
 
         // Cria o novo documento.
+        // Esta iniciando os Status tanto do Server como do Client.
         var documento = new Documento()
         {
             Id = Guid.NewGuid(),
@@ -109,7 +126,6 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
 
             // Chama o metodo que vai enviar o arquivo para o servidor analizar.
             await ServerSendContentAsync(documento, cancellationToken);
-
         }
         catch (Exception ex)
         {
@@ -119,7 +135,6 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
 
         // retorna com uma mensagem de sucesso. 
         return new MensagemRetornoDto(200, "success");
-
     }
 
     /// <summary>
@@ -135,6 +150,17 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
             // vai na api do servidor para obter o status de processamento. 
             var retorno = await _apiServer.GetStatusAsync(documento.ServerId, cancellationToken);
 
+            if (retorno.status.Equals("Rejeitado", StringComparison.OrdinalIgnoreCase))
+            {
+                // altera o status para processando.
+                documento.ServerStatus = (int)ServerStatus.Erro;
+                documento.ServerMessage = "Documento Rejeitado";
+                // persiste no banco de dados.
+                await _documentoService.AtualizarAsync(documento, cancellationToken);
+                // Sai da checagem informando que ainda não foi concluido.
+                return new MensagemRetornoDto(400, "Documento Rejeitado, Favor verificar para novo envio!");
+            }
+
             // verifica se o resultado voltou diferente de concluido.
             if (!retorno!.status.Equals("Concluido", StringComparison.OrdinalIgnoreCase))
             {
@@ -145,7 +171,7 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
                 // Sai da checagem informando que ainda não foi concluido.
                 return new MensagemRetornoDto(400, "O Servidor ainda não concluiu o processamento!");
             }
-            
+
             //grava satatus no banco de dados 
             documento.ServerStatus = (int)ServerStatus.ProcessadoComSucesso;
 

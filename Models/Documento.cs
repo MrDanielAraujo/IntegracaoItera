@@ -24,4 +24,6 @@ public class Documento
     public string ClientArquivoNome { get; set; } = null!;
     public string ClientArquivoDataCadastro { get; set; } = null!;
     public byte[] ClientArquivoContent { get; set; } = null!;
+
+    public DateTime? DataCriacao { get; set; } = DateTime.UtcNow;
 }

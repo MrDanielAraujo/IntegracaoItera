@@ -3,6 +3,7 @@ using IntegracaoItera.Configuration;
 using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -10,6 +11,7 @@ using System.Text.Json.Nodes;
 
 namespace IntegracaoItera.Services;
 
+[AllowAnonymous]
 public class ApiServerService(
     IAuthorizedHttpClientFactory httpClientFactory,
     IOptions<ServerSettings> settings,

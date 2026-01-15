@@ -1,5 +1,6 @@
 ﻿using IntegracaoItera.Configuration;
 using IntegracaoItera.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 
 namespace IntegracaoItera.Services;
@@ -21,6 +22,7 @@ public class DocumentoStatusWorkerService(ILogger<DocumentoStatusWorkerService> 
     /// </summary>
     /// <param name="stoppingToken"></param>
     /// <returns></returns>
+    [AllowAnonymous]
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         _logger.LogInformation("[INTEGRACAO] => INICIANDO O PROCESSO DE VERIFICAÇÃO DE STATUS DE DOCUMENTOS!");

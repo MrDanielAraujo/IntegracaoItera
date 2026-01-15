@@ -12,6 +12,8 @@ public class IntegraDbContext : DbContext
 
     public DbSet<Documento> Documento { get; set; } = null!;
 
+    public DbSet<Usuario> Usuarios { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

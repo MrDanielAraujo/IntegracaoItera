@@ -1,12 +1,9 @@
-﻿using IntegracaoItera.Common;
-using IntegracaoItera.Data.DTOs;
+﻿using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
-using IntegracaoItera.Services;
-using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security;
 
 namespace IntegracaoItera.Controllers;
 
@@ -14,6 +11,7 @@ namespace IntegracaoItera.Controllers;
 [Route("[controller]")]
 [Produces("application/json")]
 [Tags("IntraCred - Endpoints Diretos")]
+[AllowAnonymous]
 public class ClientApiController(IDocumentoValidadorService documentoValidadorService, IApiClient apiClient, IDocumentoRepository documentoService) : ControllerBase
 {
     private readonly IDocumentoValidadorService _documentoValidadorService = documentoValidadorService ?? throw new ArgumentNullException(nameof(documentoValidadorService));

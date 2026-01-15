@@ -2,6 +2,7 @@
 using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace IntegracaoItera.Services;
@@ -10,6 +11,8 @@ namespace IntegracaoItera.Services;
 /// Classe que controla os metodos que acessão o banco, mais precisamente a classe Documento tabela "IteraControle".
 /// </summary>
 /// <param name="context"></param>
+
+[AllowAnonymous]
 public class DocumentoService(IntegraDbContext context) : IDocumentoRepository
 {
 

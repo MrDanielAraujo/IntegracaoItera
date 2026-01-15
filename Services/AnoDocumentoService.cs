@@ -1,7 +1,9 @@
 ﻿using IntegracaoItera.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IntegracaoItera.Services;
 
+[AllowAnonymous]
 public class AnoDocumentoService : IAnoDocumentoService
 {
     public bool AnoEhValido(int ano)

@@ -1,8 +1,10 @@
 ﻿using IntegracaoItera.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace IntegracaoItera.Services;
 
+[AllowAnonymous]
 public class JwtValidatorService : IJwtValidator
 {
     private readonly JwtSecurityTokenHandler _tokenHandler;

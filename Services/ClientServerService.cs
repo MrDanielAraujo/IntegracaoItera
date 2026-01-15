@@ -3,6 +3,7 @@ using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
+using Microsoft.AspNetCore.Authorization;
 using System.Text.Json;
 
 namespace IntegracaoItera.Services;
@@ -14,6 +15,7 @@ namespace IntegracaoItera.Services;
 /// <param name="apiServer"></param>
 /// <param name="documentoService"></param>
 /// <param name="documentoValidadorService"></param>
+[AllowAnonymous]
 public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDocumentoRepository documentoService, IDocumentoValidadorService documentoValidadorService) : IClientServerService
 {
 

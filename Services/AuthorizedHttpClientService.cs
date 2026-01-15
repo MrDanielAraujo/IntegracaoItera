@@ -1,8 +1,10 @@
 ﻿using IntegracaoItera.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using System.Net.Http.Headers;
 
 namespace IntegracaoItera.Services;
 
+[AllowAnonymous]
 public class AuthorizedHttpClientService(
     ITokenService tokenService,
     IHttpClientFactory httpClientFactory) : IAuthorizedHttpClientFactory

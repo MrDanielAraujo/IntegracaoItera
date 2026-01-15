@@ -3,10 +3,12 @@ using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Data.Enums;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
+using Microsoft.AspNetCore.Authorization;
 using System;
 
 namespace IntegracaoItera.Services;
 
+[AllowAnonymous]
 public class DocumentoValidadorService(IAnoDocumentoService anoDocumentoService) : IDocumentoValidadorService
 {
     private readonly IAnoDocumentoService _anoDocumentoService = anoDocumentoService ?? throw new ArgumentNullException(nameof(anoDocumentoService));

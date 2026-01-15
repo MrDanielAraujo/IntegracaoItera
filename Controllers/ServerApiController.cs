@@ -1,5 +1,6 @@
 ﻿using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IntegracaoItera.Controllers;
@@ -8,6 +9,7 @@ namespace IntegracaoItera.Controllers;
 [Route("[controller]")]
 [Produces("application/json")]
 [Tags("Itera - Endpoints Diretos")]
+[AllowAnonymous]
 public class ServerApiController(IApiServer apiServer) : ControllerBase
 {
     

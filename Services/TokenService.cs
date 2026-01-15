@@ -1,11 +1,13 @@
 ﻿using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Memory;
 using System.Text;
 using System.Text.Json;
 
 namespace IntegracaoItera.Services;
 
+[AllowAnonymous]
 public class TokenService(
     IMemoryCache cache,
     IJwtValidator jwtValidator,

@@ -37,6 +37,8 @@ public class DocumentoStatusWorkerService(IServiceScopeFactory scopeFactory, IOp
                     break;
 
                 await clientServerService.ServerCheckStatusAsync(document, stoppingToken);
+
+                await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
             }
 
             // ⚠️ Importante:

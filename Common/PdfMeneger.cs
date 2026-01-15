@@ -34,4 +34,15 @@ public static class PdfMeneger
 
         return resultBytes;
     }
+
+    public static byte[] ProcessarPdf(byte[] bytesPdfOriginais)
+    {
+        using MemoryStream streamOriginal = new MemoryStream(bytesPdfOriginais);
+        PdfDocument documento = PdfReader.Open(streamOriginal, PdfDocumentOpenMode.Modify);
+
+        using MemoryStream streamProcessado = new MemoryStream();
+        documento.Save(streamProcessado, false);
+        byte[] bytesPdfProcessados = streamProcessado.ToArray();
+        return bytesPdfProcessados;
+    }
 }

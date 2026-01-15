@@ -1,4 +1,5 @@
-﻿using IntegracaoItera.Configuration;
+﻿using IntegracaoItera.Common;
+using IntegracaoItera.Configuration;
 using IntegracaoItera.Data.DTOs;
 using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
@@ -140,20 +141,19 @@ public class ApiServerService(
             throw new ArgumentException("O Cnpj é uma informação obrigatoria.", nameof(document.ClientArquivoContent));
         }
 
+        var pdfBytes = PdfMeneger.ProcessarPdf(document.ClientArquivoContent);
+        
+
+
         using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(_settings, cancellationToken);
 
+       
         using var formData = new MultipartFormDataContent();
 
-        // Adiciona o arquivo - copia para MemoryStream para evitar problemas com stream fechado
-        var memoryStream = new MemoryStream(document.ClientArquivoContent);
-        //await file.CopyToAsync(memoryStream, cancellationToken);
-        //memoryStream.Position = 0;
+        var fileContent = new ByteArrayContent(pdfBytes);
+        fileContent.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
 
-        var streamContent = new StreamContent(memoryStream);
-        streamContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-        formData.Add(streamContent, "file", document.ClientArquivoNome);
-
-        // Adiciona os campos de texto
+        formData.Add(fileContent, "file", document.ClientArquivoNome);
         formData.Add(new StringContent(string.Empty), "source");
         formData.Add(new StringContent(string.Empty), "description");
         formData.Add(new StringContent(document.ClientCnpj ?? string.Empty), "cnpj");

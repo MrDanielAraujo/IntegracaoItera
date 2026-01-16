@@ -120,11 +120,11 @@ public class ServerApiController(IApiServer apiServer) : ControllerBase
     [ProducesResponseType(typeof(List<ServerExportJsonDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> GetExport(
-        [FromQuery] long? cnpj,
+        [FromQuery] string? cnpj,
         CancellationToken cancellationToken)
     {
         // Usa o CNPJ padrão se não for fornecido (mantém compatibilidade com versão anterior)
-        var cnpjValue = cnpj ?? 34413970000130;
+        var cnpjValue = cnpj ?? "34413970000130";
         var export = await _apiServer.GetExportJsonAsync(cnpjValue, cancellationToken);
         return Ok(export);
     }

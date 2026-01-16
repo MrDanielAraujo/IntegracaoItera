@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Primitives;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Serilog;
+using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 
@@ -88,7 +90,7 @@ builder.Services.AddAuthentication()
             },
             OnAuthenticationFailed = ctx =>
             {
-                // Token inv�lido ou EXPIRADO => 401
+                // Token inválido ou EXPIRADO => 401
                 ctx.NoResult();
                 ctx.Response.StatusCode = StatusCodes.Status401Unauthorized;
                 ctx.Response.ContentType = "application/json";
@@ -105,10 +107,10 @@ builder.Services.AddAuthentication()
         builder.Configuration.Bind("AzureAD", options);
     });
 
-// cria as pol�ticas de acesso, com as roles requeridas, seguindo o princ�pio do menor privil�gio, no servi�o de autoriza��o
+// cria as políticas de acesso, com as roles requeridas, seguindo o princípio do menor privilégio, no serviço de autorização
 builder.Services.AddAuthorization(options =>
 {
-    // Torna a policy padr�o (pega qualquer [Authorize] sem nome de policy)
+    // Torna a policy padrão (pega qualquer [Authorize] sem nome de policy)
     options.DefaultPolicy = new AuthorizationPolicyBuilder()
         .AddAuthenticationSchemes("Bearer")
         .AddRequirements(new UserExistsRequirement())
@@ -122,7 +124,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("TI.Only", policy => policy.RequireRole("IntraCred.TI.Usuario"));
 });
 
-// Registra o Servi�o de verifica��o de policy padr�o, com tratativas no banco de dados
+// Registra o Serviço de verificação de policy padrão, com tratativas no banco de dados
 builder.Services.AddScoped<IAuthorizationHandler, UserExistsHandler>();
 
 // Add services to the container.
@@ -131,7 +133,56 @@ builder.EnvInitializer();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+    {
+        // descrição da API no padrão OpenAPI
+        string ambientName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development" ? "Desenvolvimento" : "Produção";
+        options.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Title = $"Integração Itera Core API (.NET 8.0) - Ambiente de {ambientName}",
+            Description = "Back-end monolito, escrito em .NET 8.0 para rodar em Linux 🐧 e Windows 🪟, responsável pela validação dos documentos de balanço.",
+            Version = "v1"
+        });
+
+        // expõe os comentários XML das controllers        
+        // options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"), includeControllerXmlComments: true);
+
+        // expõe o esquema de autenticação
+        options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme()
+        {
+            Type = SecuritySchemeType.OAuth2,
+            Flows = new OpenApiOAuthFlows
+            {
+                Implicit = new OpenApiOAuthFlow
+                {
+                    AuthorizationUrl = new Uri(builder.Configuration["AzureAd:Instance"] + builder.Configuration["AzureAd:TenantId"] + "/oauth2/v2.0/authorize"),
+                    TokenUrl = new Uri(builder.Configuration["AzureAd:Instance"] + builder.Configuration["AzureAd:TenantId"] + "/oauth2/v2.0/token"),
+                    Scopes = new Dictionary<string, string>
+                    {
+                                { builder.Configuration["AzureAd:Scopes"], "Intracred.All" }
+                    }
+                }
+            }
+        });
+
+        // requer globalmente autenticação para acessar a API
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "oauth2" }
+                },
+                new[]
+                {
+                    builder.Configuration["AzureAd:Scopes"]
+                }
+            }
+        });
+    }
+
+);
+
 builder.Services.AddAppServices(builder.Configuration);
 builder.Services.AddDatabase(builder.Configuration);
 
@@ -141,7 +192,17 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        string ambientName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development" ? "Desenvolvimento" : "Produção";
+
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+        options.DocumentTitle = $"Swagger UI - {ambientName}";
+        options.RoutePrefix = string.Empty;
+        options.OAuthClientId(builder.Configuration["AzureAd:ClientId"]);
+        options.OAuthUsePkce();
+        options.EnablePersistAuthorization();
+    });
 }
 
 app.UseHttpsRedirection();

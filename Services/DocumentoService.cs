@@ -71,4 +71,13 @@ public class DocumentoService(IntegraDbContext context) : IDocumentoRepository
                     d.ServerStatus == (int)ServerStatus.Processando
                     ).ToListAsync(cancellationToken);
     }
+
+    public async Task<List<Documento>?> ObterProcessadosNaoEnviadosAsync(CancellationToken cancellationToken)
+    {
+        return await _context.Set<Documento>()
+                .Where(
+                    d => d.ServerStatus == (int)ServerStatus.ProcessadoComSucesso &&
+                    d.ClientStatus == (int)ClientStatus.Recebido
+                    ).ToListAsync(cancellationToken);
+    }
 }

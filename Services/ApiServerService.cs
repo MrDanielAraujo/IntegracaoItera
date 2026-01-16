@@ -42,7 +42,7 @@ public class ApiServerService(
         return await response.Content.ReadAsStringAsync(cancellationToken);
     }
 
-    public async Task<List<ServerExportJsonDto>> GetExportJsonAsync(long cnpj, CancellationToken cancellationToken = default)
+    public async Task<List<ServerExportJsonDto>> GetExportJsonAsync(string cnpj, CancellationToken cancellationToken = default)
     {
         using var httpClient = await _httpClientFactory.CreateAuthorizedClientAsync(_settings, cancellationToken);
 

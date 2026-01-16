@@ -181,7 +181,8 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
             await _documentoService.AtualizarAsync(documento, cancellationToken);
 
             // chama o metodo que vai obter o conteudo processado. 
-            return await ServerGetResultAsync(documento, cancellationToken);
+            //return await ServerGetResultAsync(documento, cancellationToken);
+            return new MensagemRetornoDto(200, "success");
         }
         catch (Exception ex)
         {
@@ -200,7 +201,7 @@ public class ClientServerService(IApiClient apiClient, IApiServer apiServer, IDo
         try
         {
             // vai no servidor buscar o conteudo processado
-            var exportJson = await _apiServer.GetExportJsonAsync(long.Parse(documento.ClientCnpj), cancellationToken);
+            var exportJson = await _apiServer.GetExportJsonAsync(documento.ClientCnpj, cancellationToken);
 
             // converteu o conteudo em um tipo json string
             documento.ServerResult = JsonSerializer.Serialize(exportJson);

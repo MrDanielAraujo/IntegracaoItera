@@ -13,4 +13,6 @@ public interface IDocumentoRepository
     Task<Documento?> ObterPorCnpjAsync(string cnpj, CancellationToken cancellationToken);
 
     Task<List<Documento>?> ObterPendentesProcessamentoAsync(CancellationToken cancellationToken);
+
+    Task<List<Documento>?> ObterProcessadosNaoEnviadosAsync(CancellationToken cancellationToken);
 }

@@ -40,6 +40,32 @@
   },
   {
     "ContainingType": "IntegracaoItera.Controllers.ClientApiController",
+    "Method": "GetAccessToken",
+    "RelativePath": "ClientApi/GetAccessToken",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "IntraCred - Endpoints Diretos"
+    ]
+  },
+  {
+    "ContainingType": "IntegracaoItera.Controllers.ClientApiController",
     "Method": "UploadDocument",
     "RelativePath": "ClientApi/UploadDocument",
     "HttpMethod": "POST",
@@ -223,7 +249,7 @@
     "Parameters": [
       {
         "Name": "cnpj",
-        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

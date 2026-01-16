@@ -1,8 +1,9 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "IntegracaoItera",
-    "version": "1.0"
+    "title": "Integração Itera Core API (.NET 8.0) - Ambiente de Desenvolvimento",
+    "description": "Back-end monolito, escrito em .NET 8.0 para rodar em Linux 🐧 e Windows 🪟, responsável pela validação dos documentos de balanço.",
+    "version": "v1"
   },
   "paths": {
     "/ClientApi/UploadDocument": {
@@ -107,6 +108,28 @@
         }
       }
     },
+    "/ClientApi/GetAccessToken": {
+      "get": {
+        "tags": [
+          "IntraCred - Endpoints Diretos"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/ServerApi/GetAccessToken": {
       "get": {
         "tags": [
@@ -171,8 +194,7 @@
             "name": "cnpj",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
@@ -776,6 +798,27 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://login.microsoftonline.com/bdd81587-2678-488e-aea5-a3b1454332ed/oauth2/v2.0/authorize",
+            "tokenUrl": "https://login.microsoftonline.com/bdd81587-2678-488e-aea5-a3b1454332ed/oauth2/v2.0/token",
+            "scopes": {
+              "api://550d5320-9204-4ad2-ba92-a01af13ee779/IntraCred.All": "Intracred.All"
+            }
+          }
+        }
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "oauth2": [
+        "api://550d5320-9204-4ad2-ba92-a01af13ee779/IntraCred.All"
+      ]
+    }
+  ]
 }

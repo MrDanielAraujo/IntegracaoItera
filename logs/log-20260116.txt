@@ -1,0 +1,225 @@
+2026-01-16 08:56:27.998 -03:00 [INF] User profile is available. Using 'C:\Users\daniel.gomes\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-16 08:56:28.105 -03:00 [INF] [INTEGRACAO] => INICIANDO O PROCESSO DE VERIFICAÇÃO DE STATUS DE DOCUMENTOS!
+2026-01-16 08:56:29.025 -03:00 [INF] Now listening on: https://localhost:7074
+2026-01-16 08:56:29.030 -03:00 [INF] Now listening on: http://localhost:5183
+2026-01-16 08:57:38.520 -03:00 [INF] User profile is available. Using 'C:\Users\daniel.gomes\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-16 08:57:38.606 -03:00 [INF] [INTEGRACAO] => INICIANDO O PROCESSO DE VERIFICAÇÃO DE STATUS DE DOCUMENTOS!
+2026-01-16 08:57:39.004 -03:00 [INF] Now listening on: https://localhost:7074
+2026-01-16 08:57:39.006 -03:00 [INF] Now listening on: http://localhost:5183
+2026-01-16 08:57:39.243 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-16 08:57:39.252 -03:00 [INF] Hosting environment: Development
+2026-01-16 08:57:39.255 -03:00 [INF] Content root path: C:\Users\daniel.gomes\source\repos\IntegracaoItera
+2026-01-16 08:57:39.466 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/index.html - null null
+2026-01-16 08:57:39.716 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/index.html - 404 null null 264.8425ms
+2026-01-16 08:57:39.727 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7074/swagger/index.html, Response status code: 404
+2026-01-16 08:57:40.536 -03:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" IN (2, 3)
+2026-01-16 08:57:40.567 -03:00 [INF] [INTEGRACAO] => A QUANTIDADE DE DOCUMENTOS QUE VAMOS VERIDICAR 0!
+2026-01-16 08:57:40.601 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" = 4 AND i."ClientStatus" = 1
+2026-01-16 08:57:40.609 -03:00 [INF] [INTEGRACAO] => AGUARDANDO 60 MINUTOS PARA A PRÓXIMA CHECAGEM!
+2026-01-16 08:57:57.485 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/index.html - null null
+2026-01-16 08:57:57.503 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/index.html - 404 null null 18.5244ms
+2026-01-16 08:57:57.525 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7074/swagger/index.html, Response status code: 404
+2026-01-16 08:59:11.608 -03:00 [INF] User profile is available. Using 'C:\Users\daniel.gomes\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-16 08:59:11.719 -03:00 [INF] [INTEGRACAO] => INICIANDO O PROCESSO DE VERIFICAÇÃO DE STATUS DE DOCUMENTOS!
+2026-01-16 08:59:12.172 -03:00 [INF] Now listening on: https://localhost:7074
+2026-01-16 08:59:12.177 -03:00 [INF] Now listening on: http://localhost:5183
+2026-01-16 08:59:12.541 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-16 08:59:12.605 -03:00 [INF] Hosting environment: Development
+2026-01-16 08:59:12.607 -03:00 [INF] Content root path: C:\Users\daniel.gomes\source\repos\IntegracaoItera
+2026-01-16 08:59:12.684 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/index.html - null null
+2026-01-16 08:59:12.920 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/index.html - 404 null null 252.9868ms
+2026-01-16 08:59:12.937 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7074/swagger/index.html, Response status code: 404
+2026-01-16 08:59:13.857 -03:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" IN (2, 3)
+2026-01-16 08:59:13.885 -03:00 [INF] [INTEGRACAO] => A QUANTIDADE DE DOCUMENTOS QUE VAMOS VERIDICAR 0!
+2026-01-16 08:59:13.913 -03:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" = 4 AND i."ClientStatus" = 1
+2026-01-16 08:59:13.920 -03:00 [INF] [INTEGRACAO] => AGUARDANDO 60 MINUTOS PARA A PRÓXIMA CHECAGEM!
+2026-01-16 08:59:41.212 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/v1/index.html - null null
+2026-01-16 08:59:41.260 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/v1/index.html - 404 null null 50.8873ms
+2026-01-16 08:59:41.276 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7074/swagger/v1/index.html, Response status code: 404
+2026-01-16 08:59:55.909 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/index.html - null null
+2026-01-16 08:59:55.927 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/index.html - 404 null null 18.7973ms
+2026-01-16 08:59:55.940 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7074/swagger/index.html, Response status code: 404
+2026-01-16 09:00:00.434 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/ - null null
+2026-01-16 09:00:00.452 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/ - 301 null null 19.2563ms
+2026-01-16 09:00:00.458 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/index.html - null null
+2026-01-16 09:00:00.705 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger-ui-bundle.js - null null
+2026-01-16 09:00:00.706 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger-ui.css - null null
+2026-01-16 09:00:00.739 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/index.html - 200 null text/html;charset=utf-8 281.7108ms
+2026-01-16 09:00:00.708 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger-ui-standalone-preset.js - null null
+2026-01-16 09:00:00.723 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-16 09:00:00.737 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_vs/browserLink - null null
+2026-01-16 09:00:00.890 -03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-01-16 09:00:00.909 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 186.0847ms
+2026-01-16 09:00:00.917 -03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-01-16 09:00:00.921 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger-ui-standalone-preset.js - 200 230280 text/javascript 213.3605ms
+2026-01-16 09:00:00.943 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger-ui-bundle.js - 200 1456926 text/javascript 237.1567ms
+2026-01-16 09:00:00.891 -03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-01-16 09:00:00.992 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger-ui.css - 200 152034 text/css 285.7089ms
+2026-01-16 09:00:01.099 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_vs/browserLink - 200 null text/javascript; charset=UTF-8 361.928ms
+2026-01-16 09:00:01.158 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - null null
+2026-01-16 09:00:01.177 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/favicon-32x32.png - null null
+2026-01-16 09:00:01.187 -03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-01-16 09:00:01.191 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/favicon-32x32.png - 200 628 image/png 14.7426ms
+2026-01-16 09:00:01.238 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 80.878ms
+2026-01-16 09:00:29.062 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/oauth2-redirect.html - null null
+2026-01-16 09:00:29.074 -03:00 [INF] Sending file. Request path: '/oauth2-redirect.html'. Physical path: 'N/A'
+2026-01-16 09:00:29.080 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/oauth2-redirect.html - 200 null text/html 18.2558ms
+2026-01-16 09:00:29.093 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-16 09:00:29.094 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_vs/browserLink - null null
+2026-01-16 09:00:29.112 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 18.5009ms
+2026-01-16 09:00:29.142 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.3896ms
+2026-01-16 09:01:11.622 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/ServerApi/GetExport - null null
+2026-01-16 09:01:11.647 -03:00 [INF] Executing endpoint 'IntegracaoItera.Controllers.ServerApiController.GetExport (IntegracaoItera)'
+2026-01-16 09:01:11.703 -03:00 [INF] Route matched with {action = "GetExport", controller = "ServerApi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetExport(System.String, System.Threading.CancellationToken) on controller IntegracaoItera.Controllers.ServerApiController (IntegracaoItera).
+2026-01-16 09:01:11.845 -03:00 [INF] Start processing HTTP request POST https://api.balanco.itera.ai/api/auth
+2026-01-16 09:01:11.867 -03:00 [INF] Sending HTTP request POST https://api.balanco.itera.ai/api/auth
+2026-01-16 09:01:12.460 -03:00 [INF] Received HTTP response headers after 576.5819ms - 200
+2026-01-16 09:01:12.471 -03:00 [INF] End processing HTTP request after 634.2419ms - 200
+2026-01-16 09:01:12.504 -03:00 [INF] Start processing HTTP request GET https://api.balanco.itera.ai/api/v2/history/export?cnpj=34413970000130
+2026-01-16 09:01:12.511 -03:00 [INF] Sending HTTP request GET https://api.balanco.itera.ai/api/v2/history/export?cnpj=34413970000130
+2026-01-16 09:01:12.857 -03:00 [INF] Received HTTP response headers after 338.9955ms - 200
+2026-01-16 09:01:12.869 -03:00 [INF] End processing HTTP request after 364.4929ms - 200
+2026-01-16 09:01:12.982 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IntegracaoItera.Data.DTOs.ServerExportJsonDto, IntegracaoItera, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-01-16 09:01:13.067 -03:00 [INF] Executed action IntegracaoItera.Controllers.ServerApiController.GetExport (IntegracaoItera) in 1338.3157ms
+2026-01-16 09:01:13.081 -03:00 [INF] Executed endpoint 'IntegracaoItera.Controllers.ServerApiController.GetExport (IntegracaoItera)'
+2026-01-16 09:01:13.090 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/ServerApi/GetExport - 200 null application/json; charset=utf-8 1468.2261ms
+2026-01-16 09:02:10.793 -03:00 [INF] Request starting HTTP/2 POST https://localhost:7074/ProcessarDocumentos/Processar - application/json 188
+2026-01-16 09:02:10.810 -03:00 [INF] Executing endpoint 'IntegracaoItera.Controllers.ProcessarDocumentosController.Processar (IntegracaoItera)'
+2026-01-16 09:02:10.821 -03:00 [INF] Route matched with {action = "Processar", controller = "ProcessarDocumentos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Processar(IntegracaoItera.Data.DTOs.ClientRequestDto, System.Threading.CancellationToken) on controller IntegracaoItera.Controllers.ProcessarDocumentosController (IntegracaoItera).
+2026-01-16 09:02:10.880 -03:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-01-16 09:02:10.917 -03:00 [INF] Executed action IntegracaoItera.Controllers.ProcessarDocumentosController.Processar (IntegracaoItera) in 85.212ms
+2026-01-16 09:02:11.001 -03:00 [INF] Executed endpoint 'IntegracaoItera.Controllers.ProcessarDocumentosController.Processar (IntegracaoItera)'
+2026-01-16 09:02:11.007 -03:00 [INF] Request finished HTTP/2 POST https://localhost:7074/ProcessarDocumentos/Processar - 400 null application/json; charset=utf-8 216.2317ms
+2026-01-16 09:05:38.337 -03:00 [INF] User profile is available. Using 'C:\Users\daniel.gomes\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-16 09:05:38.412 -03:00 [INF] [INTEGRACAO] => INICIANDO O PROCESSO DE VERIFICAÇÃO DE STATUS DE DOCUMENTOS!
+2026-01-16 09:05:38.772 -03:00 [INF] Now listening on: https://localhost:7074
+2026-01-16 09:05:38.776 -03:00 [INF] Now listening on: http://localhost:5183
+2026-01-16 09:05:38.860 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-16 09:05:38.862 -03:00 [INF] Hosting environment: Development
+2026-01-16 09:05:38.866 -03:00 [INF] Content root path: C:\Users\daniel.gomes\source\repos\IntegracaoItera
+2026-01-16 09:05:39.466 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/index.html - null null
+2026-01-16 09:05:39.699 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/index.html - 404 null null 257.3492ms
+2026-01-16 09:05:39.717 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7074/swagger/index.html, Response status code: 404
+2026-01-16 09:05:39.867 -03:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" IN (2, 3)
+2026-01-16 09:05:39.908 -03:00 [INF] [INTEGRACAO] => A QUANTIDADE DE DOCUMENTOS QUE VAMOS VERIDICAR 0!
+2026-01-16 09:05:39.938 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" = 4 AND i."ClientStatus" = 1
+2026-01-16 09:05:39.968 -03:00 [INF] [INTEGRACAO] => AGUARDANDO 60 MINUTOS PARA A PRÓXIMA CHECAGEM!
+2026-01-16 09:05:48.480 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/index.html - null null
+2026-01-16 09:05:48.715 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_vs/browserLink - null null
+2026-01-16 09:05:48.718 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-16 09:05:48.730 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/index.html - 200 null text/html;charset=utf-8 249.9021ms
+2026-01-16 09:05:48.777 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 59.9798ms
+2026-01-16 09:05:48.821 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_vs/browserLink - 200 null text/javascript; charset=UTF-8 106.8603ms
+2026-01-16 09:05:48.898 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - null null
+2026-01-16 09:05:48.979 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 81.0082ms
+2026-01-16 09:08:14.613 -03:00 [INF] User profile is available. Using 'C:\Users\daniel.gomes\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-16 09:08:14.845 -03:00 [INF] [INTEGRACAO] => INICIANDO O PROCESSO DE VERIFICAÇÃO DE STATUS DE DOCUMENTOS!
+2026-01-16 09:08:15.684 -03:00 [INF] Now listening on: https://localhost:7074
+2026-01-16 09:08:15.690 -03:00 [INF] Now listening on: http://localhost:5183
+2026-01-16 09:08:15.916 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-16 09:08:15.921 -03:00 [INF] Hosting environment: Development
+2026-01-16 09:08:15.929 -03:00 [INF] Content root path: C:\Users\daniel.gomes\source\repos\IntegracaoItera
+2026-01-16 09:08:16.142 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/index.html - null null
+2026-01-16 09:08:16.546 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-16 09:08:16.546 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_vs/browserLink - null null
+2026-01-16 09:08:16.554 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/index.html - 200 null text/html;charset=utf-8 432.3235ms
+2026-01-16 09:08:16.570 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 24.6268ms
+2026-01-16 09:08:16.636 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.0286ms
+2026-01-16 09:08:16.675 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - null null
+2026-01-16 09:08:16.723 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 48.9002ms
+2026-01-16 09:08:17.253 -03:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" IN (2, 3)
+2026-01-16 09:08:17.313 -03:00 [INF] [INTEGRACAO] => A QUANTIDADE DE DOCUMENTOS QUE VAMOS VERIDICAR 0!
+2026-01-16 09:08:17.340 -03:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" = 4 AND i."ClientStatus" = 1
+2026-01-16 09:08:17.356 -03:00 [INF] [INTEGRACAO] => AGUARDANDO 60 MINUTOS PARA A PRÓXIMA CHECAGEM!
+2026-01-16 09:22:06.271 -03:00 [INF] User profile is available. Using 'C:\Users\daniel.gomes\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-16 09:22:06.622 -03:00 [INF] [INTEGRACAO] => INICIANDO O PROCESSO DE VERIFICAÇÃO DE STATUS DE DOCUMENTOS!
+2026-01-16 09:22:08.633 -03:00 [INF] Now listening on: https://localhost:7074
+2026-01-16 09:22:08.639 -03:00 [INF] Now listening on: http://localhost:5183
+2026-01-16 09:22:09.027 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-16 09:22:09.066 -03:00 [INF] Hosting environment: Development
+2026-01-16 09:22:09.071 -03:00 [INF] Content root path: C:\Users\daniel.gomes\source\repos\IntegracaoItera
+2026-01-16 09:22:09.284 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/index.html - null null
+2026-01-16 09:22:10.185 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_vs/browserLink - null null
+2026-01-16 09:22:10.185 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-16 09:22:10.207 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/index.html - 200 null text/html;charset=utf-8 966.4352ms
+2026-01-16 09:22:10.253 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 66.1993ms
+2026-01-16 09:22:10.310 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_vs/browserLink - 200 null text/javascript; charset=UTF-8 126.0924ms
+2026-01-16 09:22:10.350 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - null null
+2026-01-16 09:22:10.414 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 63.56ms
+2026-01-16 09:22:12.516 -03:00 [INF] Executed DbCommand (88ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" IN (2, 3)
+2026-01-16 09:22:12.594 -03:00 [INF] [INTEGRACAO] => A QUANTIDADE DE DOCUMENTOS QUE VAMOS VERIDICAR 0!
+2026-01-16 09:22:12.673 -03:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" = 4 AND i."ClientStatus" = 1
+2026-01-16 09:22:12.689 -03:00 [INF] [INTEGRACAO] => AGUARDANDO 60 MINUTOS PARA A PRÓXIMA CHECAGEM!
+2026-01-16 09:22:27.714 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/ClientApi/GetAccessToken - null null
+2026-01-16 09:22:27.750 -03:00 [INF] Executing endpoint 'IntegracaoItera.Controllers.ClientApiController.GetAccessToken (IntegracaoItera)'
+2026-01-16 09:22:27.833 -03:00 [INF] Route matched with {action = "GetAccessToken", controller = "ClientApi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAccessToken(System.Nullable`1[System.Guid], System.Threading.CancellationToken) on controller IntegracaoItera.Controllers.ClientApiController (IntegracaoItera).
+2026-01-16 09:22:27.970 -03:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-01-16 09:22:28.016 -03:00 [INF] Executed action IntegracaoItera.Controllers.ClientApiController.GetAccessToken (IntegracaoItera) in 152.0697ms
+2026-01-16 09:22:28.026 -03:00 [INF] Executed endpoint 'IntegracaoItera.Controllers.ClientApiController.GetAccessToken (IntegracaoItera)'
+2026-01-16 09:22:28.039 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/ClientApi/GetAccessToken - 200 null application/json; charset=utf-8 325.9191ms
+2026-01-16 09:24:39.846 -03:00 [INF] User profile is available. Using 'C:\Users\daniel.gomes\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-01-16 09:24:39.925 -03:00 [INF] [INTEGRACAO] => INICIANDO O PROCESSO DE VERIFICAÇÃO DE STATUS DE DOCUMENTOS!
+2026-01-16 09:24:40.555 -03:00 [INF] Now listening on: https://localhost:7074
+2026-01-16 09:24:40.563 -03:00 [INF] Now listening on: http://localhost:5183
+2026-01-16 09:24:41.002 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-01-16 09:24:41.007 -03:00 [INF] Hosting environment: Development
+2026-01-16 09:24:41.013 -03:00 [INF] Content root path: C:\Users\daniel.gomes\source\repos\IntegracaoItera
+2026-01-16 09:24:41.377 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/index.html - null null
+2026-01-16 09:24:42.108 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - null null
+2026-01-16 09:24:42.108 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/_vs/browserLink - null null
+2026-01-16 09:24:42.114 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/index.html - 200 null text/html;charset=utf-8 769.2726ms
+2026-01-16 09:24:42.144 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 36.0106ms
+2026-01-16 09:24:42.257 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/_vs/browserLink - 200 null text/javascript; charset=UTF-8 149.4629ms
+2026-01-16 09:24:42.327 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - null null
+2026-01-16 09:24:42.397 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 70.2665ms
+2026-01-16 09:24:43.757 -03:00 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" IN (2, 3)
+2026-01-16 09:24:43.838 -03:00 [INF] [INTEGRACAO] => A QUANTIDADE DE DOCUMENTOS QUE VAMOS VERIDICAR 0!
+2026-01-16 09:24:43.901 -03:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT i."Id", i."ClientArquivoAno", i."ClientArquivoContent", i."ClientArquivoDataCadastro", i."ClientArquivoNome", i."ClientArquivoTipo", i."ClientCnpj", i."ClientStatus", i."DataCriacao", i."ServerId", i."ServerMessage", i."ServerResult", i."ServerStatus"
+FROM "IteraControle" AS i
+WHERE i."ServerStatus" = 4 AND i."ClientStatus" = 1
+2026-01-16 09:24:43.918 -03:00 [INF] [INTEGRACAO] => AGUARDANDO 60 MINUTOS PARA A PRÓXIMA CHECAGEM!
+2026-01-16 09:35:37.685 -03:00 [INF] Request starting HTTP/2 GET https://localhost:7074/ServerApi/GetAccessToken - null null
+2026-01-16 09:35:37.768 -03:00 [INF] Executing endpoint 'IntegracaoItera.Controllers.ServerApiController.GetAccessToken (IntegracaoItera)'
+2026-01-16 09:35:37.903 -03:00 [INF] Route matched with {action = "GetAccessToken", controller = "ServerApi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAccessToken(System.Threading.CancellationToken) on controller IntegracaoItera.Controllers.ServerApiController (IntegracaoItera).
+2026-01-16 09:35:38.033 -03:00 [INF] Start processing HTTP request POST https://api.balanco.itera.ai/api/auth
+2026-01-16 09:35:38.065 -03:00 [INF] Sending HTTP request POST https://api.balanco.itera.ai/api/auth
+2026-01-16 09:35:38.740 -03:00 [INF] Received HTTP response headers after 660.8645ms - 200
+2026-01-16 09:35:38.754 -03:00 [INF] End processing HTTP request after 735.0553ms - 200
+2026-01-16 09:35:38.841 -03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-01-16 09:35:38.863 -03:00 [INF] Executed action IntegracaoItera.Controllers.ServerApiController.GetAccessToken (IntegracaoItera) in 941.3235ms
+2026-01-16 09:35:38.875 -03:00 [INF] Executed endpoint 'IntegracaoItera.Controllers.ServerApiController.GetAccessToken (IntegracaoItera)'
+2026-01-16 09:35:38.882 -03:00 [INF] Request finished HTTP/2 GET https://localhost:7074/ServerApi/GetAccessToken - 200 null application/json; charset=utf-8 1198.0792ms

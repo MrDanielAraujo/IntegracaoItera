@@ -4,6 +4,9 @@ using IntegracaoItera.Interfaces;
 using IntegracaoItera.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Identity.Client;
+using System.Linq;
 
 namespace IntegracaoItera.Controllers;
 
@@ -11,19 +14,19 @@ namespace IntegracaoItera.Controllers;
 [Route("[controller]")]
 [Produces("application/json")]
 [Tags("IntraCred - Endpoints Diretos")]
-[AllowAnonymous]
-public class ClientApiController(IDocumentoValidadorService documentoValidadorService, IApiClient apiClient, IDocumentoRepository documentoService) : ControllerBase
+[Authorize]
+public class ClientApiController(IDocumentoValidadorService documentoValidadorService, IApiClient apiClient, IDocumentoRepository documentoService, IMemoryCache cache) : ControllerBase
 {
     private readonly IDocumentoValidadorService _documentoValidadorService = documentoValidadorService ?? throw new ArgumentNullException(nameof(documentoValidadorService));
     private readonly IApiClient _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
     private readonly IDocumentoRepository _documentoService = documentoService ?? throw new ArgumentNullException(nameof(documentoService));
+    private readonly IMemoryCache _cache = cache ?? throw new ArgumentNullException(nameof(cache));
 
     [HttpPost("UploadDocument")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> UploadDocument(
-        [FromBody] ClientRequestDto request )
+    public async Task<IActionResult> UploadDocument([FromBody] ClientRequestDto request )
     {
 
         if (!_documentoValidadorService.ValidarCnpj(request.Cnpj)) return BadRequest("O CNPJ informado é invalido!");
@@ -50,7 +53,6 @@ public class ClientApiController(IDocumentoValidadorService documentoValidadorSe
             ClientArquivoDataCadastro = arquivoFinal.DataCadastro.ToString(),
             ClientStatus = (int)ClientStatus.Recebido
         };
-
 
         return Ok(documento);
     }
@@ -79,5 +81,4 @@ public class ClientApiController(IDocumentoValidadorService documentoValidadorSe
 
         return Ok(await _apiClient.SetResultAsync(clientResponseDto, cancellationToken));
     }
-        
 }

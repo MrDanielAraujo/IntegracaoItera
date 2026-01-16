@@ -21,7 +21,7 @@ public interface IApiServer
     /// <param name="cnpj">CNPJ da empresa</param>
     /// <param name="cancellationToken">Token de cancelamento</param>
     /// <returns>Lista de dados da controladora</returns>
-    Task<List<ServerExportJsonDto>> GetExportJsonAsync(long cnpj, CancellationToken cancellationToken = default);
+    Task<List<ServerExportJsonDto>> GetExportJsonAsync(string cnpj, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Obtém o mapeamento De-Para pelo ID.

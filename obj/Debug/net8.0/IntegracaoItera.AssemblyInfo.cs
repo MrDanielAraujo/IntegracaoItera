@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IntegracaoItera")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2fa36eac3920fd0d290eed9e5ba4530e9b861f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72b66bcd153eb8e66ae7ec4a3b274c507302ce26")]
 [assembly: System.Reflection.AssemblyProductAttribute("IntegracaoItera")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IntegracaoItera")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
